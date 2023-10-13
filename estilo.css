@@ -33,7 +33,14 @@ img {
     display: block;
     margin: 0 auto;
 }
-
+.miformulario{
+    color: darkgray;
+}
+.horario{
+    text-align: center;
+    align-items: center;
+}
+    
 
 img {
     border: 4px solid rgb(10, 10, 10);
