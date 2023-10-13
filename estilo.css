@@ -1,12 +1,38 @@
-/*Recursos*/
-#space{ 
-    height: 60px;
+ul{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
 }
 
+.navbar-custom {
+    background-color: black; 
+    color: white;
+}
+.navbar-brand img {
+    width: 100px; /* Modifica el tamaño de la imagen del encabezado */
+    height: auto;
+    border: 0px;
+    border-radius: 0px;
+}
+.list-unstyled img {
+    width: 200px; /* Establece el ancho deseado */
+    height: 200px; /* Establece la altura deseada */
+}
+.boton-anadir-plato {
+    position: absolute;
+    top: 10;
+    right:0;
+    left: 40;
+    margin: 50px; /* Ajusta el margen según tu preferencia */
+    color: rgb(255, 255, 255);
+}
+
+/*Container fotos pagina princ.*/
 .container11{
     display: flex;
     margin-left: 10%;
     margin-right: 10%;
+    justify-content: space-around;
 }
 
 .CategoriaTitulo {
@@ -55,10 +81,8 @@ header h1{
     font: arial;
 }
 
-/*trabajo1.css*/
 li{
     color: rgb(6, 8, 8);
-    margin: 20px;
     flex: 1;
     font-size: 16;
 }
@@ -67,9 +91,11 @@ li{
     color:black;
 
 }
+
 li p{
     text-align: center;
 }
+
 header{
     text-align: left;
     width: 100%;
@@ -100,8 +126,10 @@ header h1{
     color: aliceblue;
     font: arial;
 }
+
+/*Formulario*/
 .qbanner {
-    background-color: rgb(121, 10, 10); 
+    background-color: rgb(43, 43, 43); 
     color: whitesmoke;
     font-weight: bold;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -109,30 +137,38 @@ header h1{
     height: 25px;
     width: 300px;  
 }
-
-
 #space{ 
-    height: 60px;
+    height: 70px;
 }
-#topbanner{
-    background-color: rgb(121, 10, 10);
-    height: 125px;
-}
-.container1{
-    display: flex ; 
-    flex-wrap: nowrap;
-    justify-content: center;
-}
-.container2{
-    display: flex;
-    background-color: rgb(121, 10, 10);
-    margin-left: 20%  ;
-    margin-right: 20%;
-    padding: 20px ; 
-}
-.formulario {
+.f1  {
     color:whitesmoke; 
     font-weight: 400;
     font-size: 15px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color:  rgb(43, 43, 43);
+    padding: 15px;
+    width: 40%;
+}
+.f2  {
+    color:whitesmoke; 
+    font-weight: 400;
+    font-size: 15px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color:  rgb(43, 43, 43);
+    padding: 15px;
+    width: 40%;
+}
+.formularios{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 10%;
+    margin-right: 10% ;
+    justify-content: space-evenly;
+}
+
+.form-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    margin-top: 20px;
 }
