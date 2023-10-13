@@ -3,6 +3,12 @@
     height: 60px;
 }
 
+.container11{
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .CategoriaTitulo {
     font-size: 24px; /* Modifica el tamaño de las palabras "Primero", "Segundo" y "Postre" aquí */
     color: rgb(0, 0, 0);
@@ -105,6 +111,18 @@ header h1{
 }
 
 
+#space{ 
+    height: 60px;
+}
+#topbanner{
+    background-color: rgb(121, 10, 10);
+    height: 125px;
+}
+.container1{
+    display: flex ; 
+    flex-wrap: nowrap;
+    justify-content: center;
+}
 .container2{
     display: flex;
     background-color: rgb(121, 10, 10);
