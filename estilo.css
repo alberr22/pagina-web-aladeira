@@ -1,4 +1,10 @@
 
+.container11{
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .CategoriaTitulo {
     font-size: 24px; /* Modifica el tamaño de las palabras "Primero", "Segundo" y "Postre" aquí */
     color: rgb(0, 0, 0);
@@ -108,7 +114,7 @@ header h1{
     width: 300px;  
 }
 #space{ 
-    height: 50px;
+    height: 60px;
 }
 #topbanner{
     background-color: rgb(121, 10, 10);
