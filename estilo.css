@@ -222,6 +222,22 @@ main {
     flex-direction: row;
     width: 20%;
     height: 100%;
+
+}
+
+.alergenos {
+    display: flex;
+    column-gap: 10px;
+}
+
+.sulfitos {
+    margin: none;
+    border: black;
+}
+
+.gluten{
+    margin: none;
+    border: black;
 }
 
 .descripcion-formulario {
