@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--FORMATO DE BOOSTRAP, ICONOS Y NAVBARS (NO TOCAR)-->
+    <!--FORMATO DE BOOSTRAP, ICONOS Y NAVBARS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -52,26 +52,37 @@
           </div>
         </div>
       </nav>
-<!--FIN DEL HEADER-->
-<p id="space"></p> 
+<!--FIN DEL HEADER--> 
+<p></p>
 <!--FIN DEL ESPACIADO DESPUES DEL HEADER-->  
-<div class="left-side">
-    <a href="https://comida-tipica.com/callos-madrilena/">
+<div class="img-callos">
+    <a href="index.html">
         <img src="https://comida-tipica.com/wp-content/uploads/2023/01/callos-madrilena-1.jpg" >
     </a>
 </div>
 
-<div class="right-side">
+<div class="descripcion-formulario">
     <div class="text-section">
         <p><strong>Callos de la Casa</strong></p>
+        <p><em>Ingredientes:</em> La base del plato, se compone de tripas y fragmentos de estómago de vaca (aunque también se pueden pedir de cerdo o cordero). Junto a éstos se incluyen chorizo, morcilla, tocino, y mano o morro de vaca.</p>
         <p><em>Precio:</em> 12€</p>
-        <p><em>Descripción:</em> Los callos a la gallega son un plato icónico de la cocina gallega, conocido también como callos con capipota en Cataluña. Esta receta tradicional gallega combina los callos y pies de ternera cocidos a fuego lento con garbanzos, creando un plato rico en sabor y textura. </p>
+        <p>
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" checked>
+          <label class="form-check-label" for="defaultCheck2"> Primeros </label>
+
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+          <label class="form-check-label" for="flexCheckDisabled"> Segundos </label>
+
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+          <label class="form-check-label" for="flexCheckDisabled"> Postres </label>
+        
+        </p>
         <p><em>Alérgenos:</em> Gluten y Sulfitos</p>
     
         <div class="button-container">
             <button class="delete">Borrar</button>
             <button class="edit">Editar</button>
-            <button class="view">Ver Todos los Elementos</button>
+            <a href="index.html"><button class="view">Ver Todos los Elementos</button></a>
         </div>
     </div>
 
