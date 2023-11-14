@@ -2,7 +2,7 @@ import express from 'express';
 import mustacheExpress from 'mustache-express';
 import bodyParser from 'body-parser';
 import { __dirname } from './dirname.js';
-import boardRouter from './boardRouter.js';
+import boardRouter from './boardrouter.js';
 
 const app = express();
 
