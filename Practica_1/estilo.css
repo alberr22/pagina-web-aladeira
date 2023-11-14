@@ -220,8 +220,8 @@ main {
 .img-callos img {
     display: block;
     flex-direction: row;
-    width: 20%;
-    height: 100%;
+    width: 25%;
+    display: center;
 
 }
 
@@ -294,3 +294,27 @@ button.view {
     color: white;
     border: none;
 }
+
+.pedido-container{
+
+display: flex; 
+justify-content: flex-start;
+flex-wrap: wrap;
+column-gap: 10px;
+
+} 
+
+.pedido1-container{
+border: solid black;
+padding: 5px;
+
+} 
+
+.pedido2-container{
+border: solid black;
+padding: 5px;
+
+} 
+
+
+
