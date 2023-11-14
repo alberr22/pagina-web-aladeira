@@ -1,3 +1,71 @@
+/* ************************ HEADER ****************************** */
+header img {
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+header h1{
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    font: arial;
+}
+
+li{ /*HEADER*/
+    color: rgb(6, 8, 8);
+    flex: 1;
+    font-size: 16;
+    /* FIN */
+    margin-right: 20px;
+    margin-left: 20px;
+ 
+}
+
+.categoria{
+    font-size: 24;
+    color:black;
+
+}
+
+li p{
+    text-align: center;
+}
+
+header{
+    text-align: left;
+    width: 100%;
+    height: 190px;
+    background-color:black;
+}
+
+header img {
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+header h1{
+    font-size: 24px;
+    color: aliceblue;
+    font: arial;
+}
+
+.navbar-custom {/*HEADER*/
+    background-color: black; 
+    color: white;
+}
+.navbar-brand img {/*HEADER*/
+    width: 100px; /* Modifica el tamaño de la imagen del encabezado */
+    height: auto;
+    border: 0px;
+    border-radius: 0px;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 
 /* ********************** INDEX ************************ */
 .list-unstyled img {/*P1*/
@@ -212,5 +280,28 @@ padding: 5px;
 
 } 
 
+/* ******************************* FOOTER ************************************ */
+.horario{
+    align-items: center;
+
+}
+.navbar-custom {
+    background-color: black; 
+    color: white;
+}
+.navbar-brand img {
+    width: 100px; /* Modifica el tamaño de la imagen del encabezado */
+    height: auto;
+}
+.list-unstyled img {
+    width: 200px; /* Establece el ancho deseado */
+    height: 200px; /* Establece la altura deseada */
+}
+.boton-anadirplato{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-top: 20px;
+}
 
 
