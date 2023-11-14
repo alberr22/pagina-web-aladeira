@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--FORMATO DE BOOSTRAP, ICONOS Y NAVBARS (NO TOCAR)-->
+    <!--FORMATO DE BOOSTRAP, ICONOS Y NAVBARS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -52,10 +52,63 @@
           </div>
         </div>
       </nav>
-<!--FIN DEL HEADER-->
-<p id="space"></p> 
+<!--FIN DEL HEADER--> 
+<p></p>
 <!--FIN DEL ESPACIADO DESPUES DEL HEADER-->  
+<div class="img-callos">
+    <a href="index.html">
+        <img src="https://comida-tipica.com/wp-content/uploads/2023/01/callos-madrilena-1.jpg" >
+    </a>
+</div>
 
+<div class="descripcion-formulario">
+    <div class="text-section">
+        <p><strong>Callos de la Casa</strong></p>
+        <p><em>Ingredientes:</em> La base del plato, se compone de tripas y fragmentos de estómago de vaca (aunque también se pueden pedir de cerdo o cordero). Junto a éstos se incluyen chorizo, morcilla, tocino, y mano o morro de vaca.</p>
+        <p><em>Precio:</em> 12€</p>
+        <p>
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" checked>
+          <label class="form-check-label" for="defaultCheck2"> Primeros </label>
+
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+          <label class="form-check-label" for="flexCheckDisabled"> Segundos </label>
+
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+          <label class="form-check-label" for="flexCheckDisabled"> Postres </label>
+        
+        </p>
+        <p><em>Alérgenos:</em>
+          <div class="alergenos">
+           <div class="sulfitos"> <img src="https://scu.ugr.es/pages/menu/alergenos/ficheros/Sulfito/!/thumb/75" > </div> 
+           <div class="gluten"> <img src="https://scu.ugr.es/pages/menu/alergenos/ficheros/Gluten/!/thumb/75"> </div>
+          </div>
+        </p>
+    
+        <div class="button-container">
+            <button class="delete">Borrar</button>
+            <button class="edit">Editar</button>
+            <a href="index.html"><button class="view">Ver Todos los Elementos</button></a>
+        </div>
+    </div>
+
+    <form>
+        <p><em><strong>Datos del Pedido:</strong></em></p>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" required>
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required>
+
+        <div class="button-container">
+            <button class="save">Guardar</button>
+            <button class="create">Crear</button>
+        </div>
+    </form>
+</div>
 <!--INICIO DEL ESPACIADO DESPUES DEL CONTENIDO-->
 <p id="space"></p>
     <footer class="bg-light text-dark pt-5 pb-4"> <!--INICIO FOOTER-->

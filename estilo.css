@@ -204,3 +204,93 @@ li{
     justify-content: right;
     margin-top: 20px;
 }
+
+
+/* CSS DAVID*/
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+}
+
+.img-callos img {
+    display: block;
+    flex-direction: row;
+    width: 20%;
+    height: 100%;
+
+}
+
+.alergenos {
+    display: flex;
+    column-gap: 10px;
+}
+
+.sulfitos {
+    margin: none;
+    border: black;
+}
+
+.gluten{
+    margin: none;
+    border: black;
+}
+
+.descripcion-formulario {
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-section {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    display: flex;
+    column-gap: 10px;
+}
+
+button {
+    padding: 10px;
+}
+
+button.save {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button.create {
+    background-color: #008CBA;
+    color: white;
+}
+
+button.delete,
+button.edit,
+button.view {
+    background-color: red;
+    color: white;
+    border: none;
+}
