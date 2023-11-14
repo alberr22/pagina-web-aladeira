@@ -4,21 +4,21 @@ ul{
     flex-wrap: wrap;
 }
 
-.navbar-custom {
+.navbar-custom {/*HEADER*/
     background-color: black; 
     color: white;
 }
-.navbar-brand img {
+.navbar-brand img {/*HEADER*/
     width: 100px; /* Modifica el tamaño de la imagen del encabezado */
     height: auto;
     border: 0px;
     border-radius: 0px;
 }
-.list-unstyled img {
+.list-unstyled img {/*P1*/
     width: 200px; /* Establece el ancho deseado */
     height: 200px; /* Establece la altura deseada */
 }
-.boton-anadir-plato {
+.boton-anadir-plato { /*P1*/
     position: absolute;
     top: 10;
     right:0;
@@ -27,8 +27,8 @@ ul{
     color: rgb(255, 255, 255);
 }
 
-/*Container fotos pagina princ.*/
-.container11{
+
+.container11{ /*P1*/
     display: flex;
     margin-left: 10%;
     margin-right: 10%;
