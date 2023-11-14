@@ -1,23 +1,10 @@
-ul{
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-}
 
-.navbar-custom {/*HEADER*/
-    background-color: black; 
-    color: white;
-}
-.navbar-brand img {/*HEADER*/
-    width: 100px; /* Modifica el tamaño de la imagen del encabezado */
-    height: auto;
-    border: 0px;
-    border-radius: 0px;
-}
+/* ********************** INDEX ************************ */
 .list-unstyled img {/*P1*/
     width: 200px; /* Establece el ancho deseado */
     height: 200px; /* Establece la altura deseada */
 }
+
 .boton-anadir-plato { /*P1*/
     position: absolute;
     top: 10;
@@ -26,7 +13,6 @@ ul{
     margin: 50px; /* Ajusta el margen según tu preferencia */
     color: rgb(255, 255, 255);
 }
-
 
 .container11{ /*P1*/
     display: flex;
@@ -57,6 +43,7 @@ li.Plato img {
     margin: 0 auto;
 }
 
+<<<<<<< HEAD
 img {
     max-width:600px; 
     height: 100px;
@@ -105,29 +92,21 @@ header{
 
 img {
     max-width: 400px; 
+=======
+/*ETIQUETAS IMG*/
+img {
+    border: 4px solid rgb(10, 10, 10);
+    border-radius: 10px;
+    max-width: 600PX; 
+>>>>>>> 4aec730a1e4b527c56eb25d579c202ca89bd0019
     height: auto;
     display: block;
-    margin: 0 auto;
-}
-
-img {
+    margin: 0 auto; 
     border: 4px solid black;
     border-radius: 10px;
 }
 
-header img {
-    max-width: 200px;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
-header h1{
-    font-size: 24px;
-    color: aliceblue;
-    font: arial;
-}
-
-/*Formulario*/
+/* ********************************* FORM ********************************* */
 .qbanner {
     background-color: rgb(43, 43, 43); 
     color: whitesmoke;
@@ -172,41 +151,9 @@ header h1{
     justify-content: space-around; 
     margin-top: 20px;
 }
-.horario{
-    align-items: center;
-
-}
-ul{
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-}
-li{
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
-.navbar-custom {
-    background-color: black; 
-    color: white;
-}
-.navbar-brand img {
-    width: 100px; /* Modifica el tamaño de la imagen del encabezado */
-    height: auto;
-}
-.list-unstyled img {
-    width: 200px; /* Establece el ancho deseado */
-    height: 200px; /* Establece la altura deseada */
-}
-.boton-anadirplato{
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    margin-top: 20px;
-}
 
 
-/* CSS DAVID*/
+/* ************************ PAGINA DETALLE ************************ */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -218,10 +165,7 @@ main {
 }
 
 .img-callos img {
-    display: block;
-    flex-direction: row;
-    width: 20%;
-    height: 100%;
+    width: 200%
 
 }
 
@@ -294,3 +238,96 @@ button.view {
     color: white;
     border: none;
 }
+
+/* ************************ HEADER ****************************** */
+header img {
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+header h1{
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    font: arial;
+}
+
+li{ /*HEADER*/
+    color: rgb(6, 8, 8);
+    flex: 1;
+    font-size: 16;
+    /* FIN */
+    margin-right: 20px;
+    margin-left: 20px;
+ 
+}
+
+.categoria{
+    font-size: 24;
+    color:black;
+
+}
+
+li p{
+    text-align: center;
+}
+
+header{
+    text-align: left;
+    width: 100%;
+    height: 190px;
+    background-color:black;
+}
+
+header img {
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+header h1{
+    font-size: 24px;
+    color: aliceblue;
+    font: arial;
+}
+
+.navbar-custom {/*HEADER*/
+    background-color: black; 
+    color: white;
+}
+.navbar-brand img {/*HEADER*/
+    width: 100px; /* Modifica el tamaño de la imagen del encabezado */
+    height: auto;
+    border: 0px;
+    border-radius: 0px;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* ******************************* FOOTER ************************************ */
+.horario{
+    align-items: center;
+
+}
+.navbar-custom {
+    background-color: black; 
+    color: white;
+}
+.navbar-brand img {
+    width: 100px; /* Modifica el tamaño de la imagen del encabezado */
+    height: auto;
+}
+.list-unstyled img {
+    width: 200px; /* Establece el ancho deseado */
+    height: 200px; /* Establece la altura deseada */
+}
+.boton-anadirplato{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-top: 20px;
+}
+
