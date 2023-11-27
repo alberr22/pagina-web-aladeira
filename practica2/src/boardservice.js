@@ -11,7 +11,6 @@ function addPost(category, post) {
     post.id = id.toString();
     posts[category].set(post.id, post);
 }
-
 function deletePost(category, id) {
     posts[category].delete(id);
 }

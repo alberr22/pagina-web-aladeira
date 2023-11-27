@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.post('/post/new', (req, res) => {
     let { nombredelplato, precio, alergenos } = req.body;
-    boardService.addPost({ nombredelplato, precio, alergenos });
+    boardService.addPost('primeros',{ nombredelplato, precio, alergenos });
     res.render('saved_post');
 });
 
