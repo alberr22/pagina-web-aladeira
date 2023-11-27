@@ -71,7 +71,15 @@ img {
     height: 250px;
     width: 3000px;  
 }
-
+.qbanner {
+    background-color: rgb(43, 43, 43); 
+    color: whitesmoke;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 30px;
+    height: 25px;
+    width: 300px;  
+}
 
 
 
