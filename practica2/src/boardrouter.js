@@ -12,9 +12,11 @@ router.get('/', (req, res) => {
 });
 
 router.post('/post/new', (req, res) => {
-    let { nombredelplato, precio, alergenos } = req.body;
-    boardService.addPost('primeros',{ nombredelplato, precio, alergenos });
-    res.render('saved_post');
+    let {title,ingredients, price, img,text,category} = req.body;
+    boardService.addPost(category,{title, img});
+    res.render('saved_post', { title,img });
+    console.log('Título del nuevo post:', req.body.title);
+    console.log('Título del nuevo post:', req.body.img);
 });
 
 router.get('/post/:id', (req, res) => {

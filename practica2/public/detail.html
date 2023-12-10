@@ -56,49 +56,53 @@
 	  <p id="space"></p>
   <div class="qbanner">AÑADIR NUEVO PLATO <i class="bi bi-cup-hot-fill"></i></div>
   <p id="space"></p>
+
   <div class="containerformulario">
 <div class="item f1" ><!--Columna1-->
 		<form action="post/new" method="post" class="formulario" role="form">
-		<div style="margin-bottom: 10px" class="form-group">
-			<label for="nplato">Nombre del plato :</label>
-		</div>
-		<input type='nplato'class="form-control" id="ingred" placeholder="Introduzca el nombre del plato" name='nombredelplato'/>
+			<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
+				<label for="title" class="form-label ">Titulo</label>
+				<input type="text" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="title"/>
+			</div>
 		<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
-			<label for="ingred">Ingredientes</label>
-			<input type="ingred" class="form-control" id="entero" placeholder="Introduzca los ingredientes" name="ingredientes"/>
+			<label for="ingredients">Ingredientes</label>
+			<input type="text" class="form-control" placeholder="Introduzca los ingredientes" name="ingredients"/>
 		</div>
 		<div class="form-group" style="margin-bottom: 10 px">
-		<label for="entero">precio (€):</p>
-		<input type='number'class="form-control" id="entero" placeholder="Introduzca el precio del plato" min="0" name='precio'/>
+		<label for="price">Precio (€):</p>
+		<input type="text" class="form-control" placeholder="Introduzca el precio del plato" min="0" name="price"/>
 	    </div>
 		<div class="form-group" style="margin-bottom: 10 px">
-		<label for="tipo">tipo:</label>
-		<select name="tipo" id="tipo">
-            <option value="primeros">Primer plato</option>
-            <option value="Segundos">Segundo plato</option>
-            <option value="Postres">Postre</option>
-		</select>
-		<input type="option" class="form-control" id="option" placeholder="Seleccione el tipo de plato" name='tipo'/>
+		<label for="category">Tipo:</label>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+			  <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
+			</div>
+			<select class="custom-select" id="inputGroupSelect01" name="category">
+			  <option selected>Elige...</option>
+			  <option value="primeros">Primer plato</option>
+			  <option value="segundos">Segundo plato</option>
+			  <option value="postres">Postre</option>
+			</select>
+		  </div>
 		</div>
-		
-	</form>
-</div>
-<div class="item f2"> <!--columna2 2-->
-<form action="post/new" method="post" class="formulario" role="form">
+
 	<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
 		<label for="img" class="form-label ">Imagen</label>
-		<input type="img" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" id="imagen" name="Imagen"/>
+		<input type="img" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="img"/>
 	</div>
 <div class="form-group">
-	<label for="ExampleFormControlTextarea1" > Descripcion del plato</label>
-	<textarea class="form-control"  id="exampleFormControlTextarea1" columns="59" rows="6"></textarea>
+	<label for="ExampleFormControlTextarea1"> Descripcion del plato</label>
+	<textarea type="text" class="form-control"  id="exampleFormControlTextarea1" columns="59" rows="6" name="text"></textarea>
 	
 </div>
 <p id="space"></p>
 <input type='submit' value='Save'/>
+<p id="space"></p>
 </form>
 </div>
-<p id="space"></p>
+
+  </div>
 
 
     <!--FOOTER-->

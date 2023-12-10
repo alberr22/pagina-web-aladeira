@@ -101,16 +101,12 @@ img {
     background-color:  rgb(43, 43, 43);
     padding: 15px;
     width: 40%;
+
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 20px;
 }
-.f2  {
-    color:whitesmoke; 
-    font-weight: 400;
-    font-size: 15px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color:  rgb(43, 43, 43);
-    padding: 15px;
-    width: 40%;
-}
+
 .formularios{
     display: flex;
     flex-wrap: nowrap;
@@ -119,6 +115,10 @@ img {
     justify-content: space-evenly;
 }
 
+#inputGroupSelect01 {
+    border-radius: 5px;
+    width: 40%;
+}
 .form-buttons {
     display: flex;
     align-items: center;
