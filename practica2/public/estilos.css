@@ -208,3 +208,9 @@ padding: 5px;
     display:center; 
 
 }
+.ordersContainer {
+    float: left;
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
