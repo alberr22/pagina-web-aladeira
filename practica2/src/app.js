@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import { __dirname } from './dirname.js';
 import boardRouter from './boardrouter.js';
 
+
 const app = express();
 
 app.set('views', __dirname + '/../views');
@@ -13,7 +14,7 @@ app.engine('html', mustacheExpress(), "html");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + '/../public'));
+app.use(express.static(__dirname + '/public'));
 
 app.use('/', boardRouter);
 
