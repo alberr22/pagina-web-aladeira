@@ -47,6 +47,9 @@
 			</form>
 		  </div>
 		</div>
+        <!-- Agrega este div donde quieras mostrar los pedidos -->
+            
+
 	  </nav>
 	  <!--FIN BANNER-->
 	  <!--INICIO PAGINA DETALLE-->
@@ -66,7 +69,7 @@
 
 			<div class="button-container">
 				<a href="/post/{{post.id}},{{post.category}}/delete"><button class="delete">Borrar</button></a>
-			  <button class="edit">Editar</button>
+				<a href="/post/{{post.id}},{{post.category}}/edit"><button class="edit">Editar</button></a>
 			  <a href="index.html"><button class="view">Ver Todos los Elementos</button></a>
 			</div>
 			<p></p>
@@ -76,7 +79,7 @@
 	
 	<br>
 
-	<form>
+	<form id="orderForm">
         <p><em><strong>Datos del Pedido:</strong></em></p>
 
         <label for="cantidad">Cantidad:</label>
@@ -89,10 +92,39 @@
         <input type="tel" id="telefono" name="telefono" required>
 
         <div class="button-container">
-            <button class="save">Guardar</button>
+            <button class="save" type="button" onclick="guardarPedido()">Guardar</button>
         </div>
     </form>
-
+    <script>
+        // Código JavaScript para mostrar los pedidos dinámicamente
+        function guardarPedido() {
+            // Obtén los valores del formulario
+            var cantidad = document.getElementById('cantidad').value;
+            var direccion = document.getElementById('direccion').value;
+            var telefono = document.getElementById('telefono').value;
+    
+            // Crea un nuevo div contenedor para el pedido
+            var orderContainer = document.createElement('div');
+            orderContainer.className = 'pedido-container'; // Puedes agregar clases para estilizar el contenedor
+    
+            // Agrega el contenido del pedido al contenedor
+            orderContainer.innerHTML = `
+                <p><strong>Cantidad:</strong> ${cantidad}</p>
+                <p><strong>Dirección:</strong> ${direccion}</p>
+                <p><strong>Teléfono:</strong> ${telefono}</p>
+            `;
+    
+            // Añade el contenedor al contenedor de pedidos
+            document.getElementById('ordersContainer').appendChild(orderContainer);
+    
+            // Limpia los campos del formulario después de guardar el pedido
+            document.getElementById('cantidad').value = '';
+            document.getElementById('direccion').value = '';
+            document.getElementById('telefono').value = '';
+        }
+    </script>
+    
+    <div id="ordersContainer"></div>
 <p id="space"></p>
 
 	<!--INICIO DEL ESPACIADO DESPUES DEL CONTENIDO-->

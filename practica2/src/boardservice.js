@@ -42,7 +42,4 @@ addPost("postres", { title: "Tiramisu", img:"https://recetasdecocina.elmundo.es/
 addPost("postres", { title: "Bombones de chocolate", img:"https://s1.abcstatics.com/media/gurmesevilla/2014/05/bombones-chocolate.jpg",ingredients:"Chocolate con leche, chocolate", text:"Surtido de bombones de la casa", price: "4" , category: "segundos"});
 
 // Obtener las publicaciones de una categoría específica
-const primeros = getPosts("primeros");
-const segundos = getPosts("segundos");
-const postres = getPosts("postres");
 
