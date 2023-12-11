@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.post('/post/new', (req, res) => {
     let {title,ingredients, price, img,text,category} = req.body;
-    boardService.addPost(category,{title, img});
+    boardService.addPost(category,{title, ingredients, price, img, text});
     res.render('saved_post', { title,ingredients,price,img,text,category});
 });
 
