@@ -125,12 +125,86 @@ img {
     justify-content: space-around; 
     margin-top: 20px;
 }
+/******************************************** SHOW POST ********************************************/
 
+.descripcion-formulario {
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.descripcion-callos {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    display: flex;
+    column-gap: 10px;
+}
+
+button {
+    padding: 10px;
+}
+
+button.save {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button.create {
+    background-color: #008CBA;
+    color: white;
+}
+
+button.delete,
+button.edit,
+button.view {
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+.pedido-container{
+
+display: flex; 
+justify-content: flex-start;
+flex-wrap: wrap;
+column-gap: 10px;
+
+} 
+
+.pedido1-container{
+border: solid black;
+padding: 4px;
+
+} 
+
+.pedido2-container{
+border: solid black;
+padding: 5px;
+
+} 
 .callos {
     margin-top: 10px ; 
     width: 40%;
     display:center; 
-  
-
 
 }
