@@ -13,8 +13,8 @@ router.get('/', (req, res) => {
 
 router.post('/post/new', (req, res) => {
     let {title,ingredients, price, img,text,category} = req.body;
-    boardService.addPost(category,{title, ingredients, price, img, text});
-    res.render('saved_post', { title,ingredients,price,img,text,category});
+    boardService.addPost(category,{title, ingredients, price, img, text,category});
+    res.render('saved_post');
 });
 
 router.get('/post/:id,:category', (req, res) => {
@@ -22,8 +22,8 @@ router.get('/post/:id,:category', (req, res) => {
     res.render('show_post', { post });
 });
 
-router.get('/post/:id/delete', (req, res) => {
-    boardService.deletePost(req.params.id);
+router.get('/post/:id,:category/delete', (req, res) => {
+    boardService.deletePost(req.params.category,req.params.id);
     res.render('deleted_post');
 });
 
