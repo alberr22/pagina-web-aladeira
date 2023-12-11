@@ -44,9 +44,9 @@ addPost("segundos", { title: "Bistec de Buey", img:"https://okdiario.com/img/rec
 addPost("segundos", { title: "Parrillada de Verdura", img:"https://i.blogs.es/0b605a/parrillada/450_1000.jpg",ingredients:"Espárragos, berenjena, calabacines, zanahoria, cebolla, patata", text:"Completa, opción perfecta para veganos", price: "13", category: "segundos" });
 
 addPost("postres", { title: "Tarta de queso" , img:"https://www.annarecetasfaciles.com/files/tarta-de-queso-de-la-vina.jpg",ingredients:"Queso tierno", text:"Con una capa exterior solida y un interior derretido irresistible", price: "6", category: "postres"});
-addPost("postres", { title: "Tarta de Chocolate", img:"https://i.blogs.es/4c1903/tarta-de-chocolate-facil-y-rapida/840_560.jpg",ingredients:"Chocolate negro, con leche y brownie", text:"Tres chocolates, interior caliente, hecho de forma casera", price: "6", category: "segundos" });
-addPost("postres", { title: "Tiramisu", img:"https://recetasdecocina.elmundo.es/wp-content/uploads/2022/08/tiramisu-postre-italiano.jpg",ingredients:"Whisky irlandés, bizcocho, cacao", text:"Con whisky y cognac, receta casera", price: "8", category: "segundos"});
-addPost("postres", { title: "Bombones de chocolate", img:"https://s1.abcstatics.com/media/gurmesevilla/2014/05/bombones-chocolate.jpg",ingredients:"Chocolate con leche, chocolate", text:"Surtido de bombones de la casa", price: "4" , category: "segundos"});
+addPost("postres", { title: "Tarta de Chocolate", img:"https://i.blogs.es/4c1903/tarta-de-chocolate-facil-y-rapida/840_560.jpg",ingredients:"Chocolate negro, con leche y brownie", text:"Tres chocolates, interior caliente, hecho de forma casera", price: "6", category: "postres" });
+addPost("postres", { title: "Tiramisu", img:"https://recetasdecocina.elmundo.es/wp-content/uploads/2022/08/tiramisu-postre-italiano.jpg",ingredients:"Whisky irlandés, bizcocho, cacao", text:"Con whisky y cognac, receta casera", price: "8", category: "postres"});
+addPost("postres", { title: "Bombones de chocolate", img:"https://s1.abcstatics.com/media/gurmesevilla/2014/05/bombones-chocolate.jpg",ingredients:"Chocolate con leche, chocolate", text:"Surtido de bombones de la casa", price: "4" , category: "postres"});
 
 // Obtener las publicaciones de una categoría específica
 

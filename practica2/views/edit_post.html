@@ -25,7 +25,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Aa'Lareira</a>
+            <a class="nav-link active" aria-current="page" href="#">A'Lareira</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Menu</a>
@@ -62,15 +62,15 @@
 		<form action="/post/{{post.id}},{{post.category}}/edit" method="post" class="formulario" role="form">
 			<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
 				<label for="title" class="form-label ">Titulo</label>
-				<input type="text" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="title" value="{{post.title}}"/>
+				<input type="text" required placeholder="Introduzca el tipo de plato" class="form-control" name="title" value="{{post.title}}"/>
 			</div>
 		<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
 			<label for="ingredients">Ingredientes</label>
-			<input type="text" class="form-control" placeholder="Introduzca los ingredientes" name="ingredients" value="{{post.ingredients}}"/>
+			<input type="text" required class="form-control" placeholder="Introduzca los ingredientes" name="ingredients" value="{{post.ingredients}}"/>
 		</div>
 		<div class="form-group" style="margin-bottom: 10 px">
 		<label for="price">Precio (€):</p>
-		<input type="text" class="form-control" placeholder="Introduzca el precio del plato" min="0" name="price" value="{{post.price}}"/>
+		<input type="text" required class="form-control" placeholder="Introduzca el precio del plato" min="0" name="price" value="{{post.price}}"/>
 	    </div>
 		<div class="form-group" style="margin-bottom: 10 px">
 		<label for="category">Tipo:</label>
@@ -78,8 +78,8 @@
 			<div class="input-group-prepend">
 			  <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
 			</div>
-			<select class="custom-select" id="inputGroupSelect01" name="category">
-			  <option selected>Actual: {{post.category}}</option>
+			<select required class="custom-select" id="inputGroupSelect01" name="category">
+			  <option value="{{post.category}}" selected>Mantenerlo dentro de {{post.category}}</option>
 			  <option value="primeros">Primer plato</option>
 			  <option value="segundos">Segundo plato</option>
 			  <option value="postres">Postre</option>
@@ -89,7 +89,7 @@
 
 	<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
 		<label for="img" class="form-label ">Imagen</label>
-		<input type="img" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="img" value="{{post.img}}"/>
+		<input type="img" required placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="img" value="{{post.img}}"/>
 	</div>
 <div class="form-group">
 	<label for="ExampleFormControlTextarea1"> Descripcion del plato</label>

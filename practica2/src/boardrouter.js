@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
 
 router.get('/post/:id,:category/edit', (req, res) => {
     let post = boardService.getPost(req.params.category,req.params.id);
+    console.log(req.params.category,req.params.id);
     res.render('edit_post', { post });
 });
 
