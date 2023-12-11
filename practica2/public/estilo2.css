@@ -71,7 +71,59 @@ img {
     height: 250px;
     width: 3000px;  
 }
+.qbanner {
+    background-color: rgb(43, 43, 43); 
+    color: whitesmoke;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 30px;
+    height: 25px;
+    width: 300px;  
+}
+/* ********************************* FORM ********************************* */
+.qbanner {
+    background-color: rgb(43, 43, 43); 
+    color: whitesmoke;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 30px;
+    height: 25px;
+    width: 300px;  
+}
+#space{ 
+    height: 70px;
+}
+.f1  {
+    color:whitesmoke; 
+    font-weight: 400;
+    font-size: 15px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color:  rgb(43, 43, 43);
+    padding: 15px;
+    width: 40%;
 
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 20px;
+}
 
+.formularios{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 10%;
+    margin-right: 10% ;
+    justify-content: space-evenly;
+}
+
+#inputGroupSelect01 {
+    border-radius: 5px;
+    width: 40%;
+}
+.form-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    margin-top: 20px;
+}
 
 

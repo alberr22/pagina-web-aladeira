@@ -6,13 +6,12 @@ const posts = {
 
 let nextId = 0;
 
-function addPost(category, post) {
+export function addPost(category, post) {
     let id = nextId++;
     post.id = id.toString();
     posts[category].set(post.id, post);
 }
-
-function deletePost(category, id) {
+export function deletePost(category, id) {
     posts[category].delete(id);
 }
 
@@ -23,7 +22,7 @@ export function getPosts(category) {
 }
 
 
-function getPost(category, id) {
+export function getPost(category, id) {
     return posts[category].get(id);
 }
 
