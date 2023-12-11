@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Pagina detalle</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+
+  <div class="containerformulario">
+<div class="item f1" ><!--Columna1-->
+		<form action="/post/{{post.id}}/edit" method="post" class="formulario" role="form">
+			<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
+				<label for="title" class="form-label ">Titulo</label>
+				<input type="text" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="title" value="{{post.title}}"/>
+			</div>
+		<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
+			<label for="ingredients">Ingredientes</label>
+			<input type="text" class="form-control" placeholder="Introduzca los ingredientes" name="ingredients" value="{{post.ingredients}}"/>
+		</div>
+		<div class="form-group" style="margin-bottom: 10 px">
+		<label for="price">Precio (€):</p>
+		<input type="text" class="form-control" placeholder="Introduzca el precio del plato" min="0" name="price" value="{{post.price}}"/>
+	    </div>
+		<div class="form-group" style="margin-bottom: 10 px">
+		<label for="category">Tipo:</label>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+			  <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
+			</div>
+			<select class="custom-select" id="inputGroupSelect01" name="category" value="{{post.category}}">
+			  <option selected>Elige...</option>
+			  <option value="primeros">Primer plato</option>
+			  <option value="segundos">Segundo plato</option>
+			  <option value="postres">Postre</option>
+			</select>
+		  </div>
+		</div>
+
+	<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
+		<label for="img" class="form-label ">Imagen</label>
+		<input type="img" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="img" value="{{post.img}}"/>
+	</div>
+<div class="form-group">
+	<label for="ExampleFormControlTextarea1"> Descripcion del plato</label>
+	<textarea type="text" class="form-control"  id="exampleFormControlTextarea1" columns="59" rows="6" name="text" >{{post.text}}</textarea>
+	
+</div>
+<p id="space"></p>
+<input type='submit' value='Save'/>
+<p id="space"></p>
+</form>
+</div>
+
+  </div>
+</body>
+</html>
