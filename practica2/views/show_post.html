@@ -51,19 +51,17 @@
 	  <!--FIN BANNER-->
 	  <!--INICIO PAGINA DETALLE-->
 	
-	<div class="callos">
+	
 		<p></p>
 		<a href="index.html">
-			<img src="{{post.img}}">
+			<img class="callos" src="{{post.img}}">
 		</a>
-	</div>
-	
-	
-	
+		
 	<div class="descripcion-formulario">
 		<div class="descripcion-callos">
 			<p><strong>{{post.title}}</strong></p>
-			<p><em>Ingredientes:</em> {{post.text}}</p>
+			<p><em>Ingredientes: {{post.ingredients}}</em></p>
+			<p><em>Descripcion: {{post.text}}</em></p>
 			<p><em>Precio:</em> {{post.price}} €</p>
 
 			<div class="button-container">
