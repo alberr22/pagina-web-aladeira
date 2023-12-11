@@ -11,9 +11,20 @@ router.get('/', (req, res) => {
     res.render('index', { primeros, segundos, postres });
 });
 
+router.get('/post/:id,:category/edit', (req, res) => {
+    let post = boardService.getPost(req.params.category,req.params.id);
+    res.render('edit_post', { post });
+});
+
 router.post('/post/new', (req, res) => {
     let {title,ingredients, price, img,text,category} = req.body;
     boardService.addPost(category,{title, ingredients, price, img, text,category});
+    res.render('saved_post');
+});
+
+router.post('/post/:id/edit', (req, res) => {
+    let {title,ingredients, price, img,text,category} = req.body;
+    boardService.editPost(category,{title, ingredients, price, img, text,category},req.params.id);
     res.render('saved_post');
 });
 
