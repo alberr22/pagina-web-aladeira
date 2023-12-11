@@ -182,35 +182,25 @@ button.view {
     border: none;
 }
 
-.pedido-container{
-
+.pedidocontainer{
+border: 5px solid black; 
 display: flex; 
-justify-content: flex-start;
+justify-content: space-between;
 flex-wrap: wrap;
 column-gap: 10px;
-
+float: left; 
+padding: 5px; 
 } 
 
-.pedido1-container{
-border: solid black;
-padding: 4px;
-
-} 
-
-.pedido2-container{
-border: solid black;
-padding: 5px;
-
-} 
 .callos {
     margin-top: 10px ; 
     width: 40%;
     display:center; 
-
 }
+
 .ordersContainer {
     float: left;
     margin: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     padding: 10px;
 }
