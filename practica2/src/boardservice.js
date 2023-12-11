@@ -11,11 +11,10 @@ export function addPost(category, post) {
     post.id = id.toString();
     posts[category].set(post.id, post);
 }
+
 export function deletePost(category, id) {
     posts[category].delete(id);
 }
-
-
 
 export function getPosts(category) {
     return [...posts[category].values()];

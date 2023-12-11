@@ -14,11 +14,11 @@ router.get('/', (req, res) => {
 router.post('/post/new', (req, res) => {
     let {title,ingredients, price, img,text,category} = req.body;
     boardService.addPost(category,{title, img});
-    res.render('saved_post', { title,img });
+    res.render('saved_post', { title,ingredients,price,img,text,category});
 });
 
-router.get('/post/:id', (req, res) => {
-    let post = boardService.getPost(req.params.id);
+router.get('/post/:id,:category', (req, res) => {
+    let post = boardService.getPost(req.params.category,req.params.id);
     res.render('show_post', { post });
 });
 
