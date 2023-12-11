@@ -22,9 +22,10 @@ router.post('/post/new', (req, res) => {
     res.render('saved_post');
 });
 
-router.post('/post/:id/edit', (req, res) => {
+router.post('/post/:id,:category/edit', (req, res) => {
     let {title,ingredients, price, img,text,category} = req.body;
-    boardService.editPost(category,{title, ingredients, price, img, text,category},req.params.id);
+    boardService.editPost(req.params.category,category,{title, ingredients, price, img, text,category},req.params.id);
+    console.log(req.params.category,category);
     res.render('saved_post');
 });
 
