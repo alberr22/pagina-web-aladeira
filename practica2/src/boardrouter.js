@@ -11,6 +11,17 @@ router.get('/', (req, res) => {
     res.render('index', { primeros, segundos, postres });
 });
 
+router.post('/pedido/new/:id,:category', (req, res) => {
+    boardService.addPedidos(req.body);
+    let pedidos = boardService.getPedidos();
+    let post = boardService.getPost(req.params.category,req.params.id);
+    console.log(pedidos);
+    res.render('show_post', { post, pedidos });
+    
+});
+
+
+
 router.get('/post/:id,:category/edit', (req, res) => {
     let post = boardService.getPost(req.params.category,req.params.id);
     console.log(req.params.category,req.params.id);

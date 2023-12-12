@@ -2,7 +2,9 @@ const posts = {
     primeros: new Map(),
     segundos: new Map(),
     postres: new Map(),
+    
 };
+var pedidos = new Map();
 
 let nextId = 0;
 
@@ -10,6 +12,16 @@ export function addPost(category, post) {
     let id = nextId++;
     post.id = id.toString();
     posts[category].set(post.id, post);
+}
+
+export function addPedidos(pedido) {
+    let id = nextId++;
+    pedido.id = id.toString();
+    pedidos.set(pedido.id, pedido);
+}
+
+export function getPedidos() {
+    return pedidos;
 }
 
 export function editPost(oldCategory,category, post, postid) {
