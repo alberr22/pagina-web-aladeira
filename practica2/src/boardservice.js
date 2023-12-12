@@ -14,9 +14,10 @@ export function addPost(category, post) {
 
 export function editPost(oldCategory,category, post, postid) {
     let id = parseInt(postid); // EN ESTE CASO ID ES UN NUMERO
-    post.id = postid;//           Y POSTID ES EL STRING
+    post.id = postid;//Y POSTID ES EL STRING
+    posts[oldCategory].delete(postid);           
     posts[category].set(post.id, post);
-    posts[oldCategory].delete(postid);
+    
 }
 
 export function deletePost(category, id) {
