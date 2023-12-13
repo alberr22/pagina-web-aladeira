@@ -4,8 +4,7 @@ const posts = {
     postres: new Map(),
     
 };
-import fs from 'fs';
-let pedidos = new Map();
+var pedidos = new Map();
 
 let nextId = 0;
 
@@ -21,12 +20,23 @@ export function addPedidos(pedido) {
     pedidos.set(pedido.id, pedido);
     savePedidosToFile();
 }
+import fs from 'fs';
 
+const pedidosFilePath = 'pedidos.json';
 function savePedidosToFile() {
     const pedidosArray = [...pedidos.values()];
     fs.writeFileSync(pedidosFilePath, JSON.stringify(pedidosArray), 'utf-8');
 }
 
+function loadPedidosFromFile() {
+    try {
+        const data = fs.readFileSync(pedidosFilePath, 'utf-8');
+        const pedidosArray = JSON.parse(data);
+        pedidos = new Map(pedidosArray.map(pedido => [pedido.id, pedido]));
+    } catch (error) {
+        console.error('Error reading or parsing pedidos file:', error.message);
+    }
+}
 export function getPedidos() {
     return pedidos;
 }
@@ -52,7 +62,7 @@ export function getPost(category, id) {
 }
 
 // Agregar platos a las categorías
-addPost("primeros", { title: "Callos", img:"https://lacocinadefrabisa.lavozdegalicia.es/wp-content/uploads/2023/03/callos-a-la-gallega.jpg",ingredients:"Morro, tocino, morcilla, chorizo", text:"Plato perfecto para el invierno", price: "15", category: "primeros", pedidos});
+addPost("primeros", { title: "Callos", img:"https://lacocinadefrabisa.lavozdegalicia.es/wp-content/uploads/2023/03/callos-a-la-gallega.jpg",ingredients:"Morro, tocino, morcilla, chorizo", text:"Plato perfecto para el invierno", price: "15", category: "primeros"});
 addPost("primeros", { title: "Calamares", img:"https://cdn.elcocinerocasero.com/imagen/receta/1000/2022-05-25-21-02-06/calamares-a-la-romana.jpeg", ingredients:"Harina, calamares", text:"Caseros, recibidos frescos de Galicia", price:"10", category: "primeros" });
 addPost("primeros", { title: "Sopa Gallega", img:"https://www.spain.info/.content/imagenes/cabeceras-grandes/recetas/caldo-gallego-12065082-istock.jpg", ingredients:"Pollo", text:"Caldo picante perfecto para el invierno",price: "9", category: "primeros"});
 addPost("primeros", { title: "Almejas", img:"https://lacocinadefrabisa.lavozdegalicia.es/wp-content/uploads/2019/09/almejas-marinera-3.jpg", ingredients:"Clochinas, perejil, caldo", text:"Almejas de temporadas recogidas esta misma semana", price:"16",category: "primeros"});

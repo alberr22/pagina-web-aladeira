@@ -24,6 +24,7 @@ router.post('/pedido/new/:id,:category', (req, res) => {
         boardService.addPedidos(req.body);
     }
 
+    pedidos = boardService.getPedidos();
     let post = boardService.getPost(req.params.category, req.params.id);
     console.log(pedidos);
     res.render('show_post', { post, pedidos: [...pedidos.values()] });

@@ -98,21 +98,22 @@
 
     <div class="orders3Container">
 		<h1>Pedidos</h1>
-		<div class="pedido99-container">
+		<div class="platos-container">
 			{{#pedidos}}
 				<div class="pedido">
-					<div>{{cantidad}}</div>
-					<div>{{direccion}}</div>
-					<div>{{telefono}}</div>
+					<em>{{cantidad}}</em>
+					<em>{{direccion}}</em>
+					<em>{{telefono}}</em>
 				</div>
 			{{/pedidos}}
 			{{^pedidos}}
-				<div>No hay pedidos aún.</div>
+				<p>No hay pedidos aún.</p>
 			{{/pedidos}}
 		</div>
 	</div>
 		
-   
+    
+    <div id="orders3Container"></div>
 <p id="space"></p>
 
 	<!--INICIO DEL ESPACIADO DESPUES DEL CONTENIDO-->
