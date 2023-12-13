@@ -96,23 +96,23 @@
         </div>
     </form>
 
-    <div class="container">
+    <div class="orders3Container">
 		<h1>Pedidos</h1>
-		<div class="platos-container">
+		<div class="pedido99-container">
 			{{#pedidos}}
 				<div class="pedido">
-					<em>{{Pedidos.cantidad}}</em>
-					<em>{{pedidos.telefono}}</em>
-					<em>{{pedidos.direccion}}</em>
+					<div>{{cantidad}}</div>
+					<div>{{direccion}}</div>
+					<div>{{telefono}}</div>
 				</div>
 			{{/pedidos}}
 			{{^pedidos}}
-				<p>No hay pedidos aún.</p>
+				<div>No hay pedidos aún.</div>
 			{{/pedidos}}
 		</div>
-	</div>		
-    
-    <div id="ordersContainer"></div>
+	</div>
+		
+   
 <p id="space"></p>
 
 	<!--INICIO DEL ESPACIADO DESPUES DEL CONTENIDO-->

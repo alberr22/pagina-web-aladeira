@@ -4,7 +4,8 @@ const posts = {
     postres: new Map(),
     
 };
-var pedidos = new Map();
+import fs from 'fs';
+let pedidos = new Map();
 
 let nextId = 0;
 
@@ -18,6 +19,12 @@ export function addPedidos(pedido) {
     let id = nextId++;
     pedido.id = id.toString();
     pedidos.set(pedido.id, pedido);
+    savePedidosToFile();
+}
+
+function savePedidosToFile() {
+    const pedidosArray = [...pedidos.values()];
+    fs.writeFileSync(pedidosFilePath, JSON.stringify(pedidosArray), 'utf-8');
 }
 
 export function getPedidos() {
@@ -45,7 +52,7 @@ export function getPost(category, id) {
 }
 
 // Agregar platos a las categorías
-addPost("primeros", { title: "Callos", img:"https://lacocinadefrabisa.lavozdegalicia.es/wp-content/uploads/2023/03/callos-a-la-gallega.jpg",ingredients:"Morro, tocino, morcilla, chorizo", text:"Plato perfecto para el invierno", price: "15", category: "primeros"});
+addPost("primeros", { title: "Callos", img:"https://lacocinadefrabisa.lavozdegalicia.es/wp-content/uploads/2023/03/callos-a-la-gallega.jpg",ingredients:"Morro, tocino, morcilla, chorizo", text:"Plato perfecto para el invierno", price: "15", category: "primeros", pedidos});
 addPost("primeros", { title: "Calamares", img:"https://cdn.elcocinerocasero.com/imagen/receta/1000/2022-05-25-21-02-06/calamares-a-la-romana.jpeg", ingredients:"Harina, calamares", text:"Caseros, recibidos frescos de Galicia", price:"10", category: "primeros" });
 addPost("primeros", { title: "Sopa Gallega", img:"https://www.spain.info/.content/imagenes/cabeceras-grandes/recetas/caldo-gallego-12065082-istock.jpg", ingredients:"Pollo", text:"Caldo picante perfecto para el invierno",price: "9", category: "primeros"});
 addPost("primeros", { title: "Almejas", img:"https://lacocinadefrabisa.lavozdegalicia.es/wp-content/uploads/2019/09/almejas-marinera-3.jpg", ingredients:"Clochinas, perejil, caldo", text:"Almejas de temporadas recogidas esta misma semana", price:"16",category: "primeros"});

@@ -1,9 +1,10 @@
 import express from 'express';
-import * as boardService from './boardService.js';
+import * as boardService from './boardservice.js';
 
 const router = express.Router();
+router.use(express.urlencoded({ extended: true })); // Agrega esta línea para configurar body-parser
 
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
     const primeros = boardService.getPosts('primeros');
     const segundos = boardService.getPosts('segundos');
     const postres = boardService.getPosts('postres');
@@ -12,12 +13,20 @@ router.get('/', (req, res) => {
 });
 
 router.post('/pedido/new/:id,:category', (req, res) => {
-    boardService.addPedidos(req.body);
     let pedidos = boardService.getPedidos();
-    let post = boardService.getPost(req.params.category,req.params.id);
+
+    // Verifica si el pedido ya existe antes de agregarlo nuevamente
+    const pedidoExistente = Array.from(pedidos.values()).find(
+        pedido => pedido.cantidad === req.body.cantidad && pedido.direccion === req.body.direccion && pedido.telefono === req.body.telefono
+    );
+
+    if (!pedidoExistente) {
+        boardService.addPedidos(req.body);
+    }
+
+    let post = boardService.getPost(req.params.category, req.params.id);
     console.log(pedidos);
-    res.render('show_post', { post, pedidos });
-    
+    res.render('show_post', { post, pedidos: [...pedidos.values()] });
 });
 
 
