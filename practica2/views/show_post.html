@@ -100,16 +100,19 @@
 		<h1>Pedidos</h1>
 		<div class="platos-container">
 			{{#pedidos}}
+			
 				<div class="pedido">
 					<em>{{cantidad}}</em>
 					<em>{{direccion}}</em>
 					<em>{{telefono}}</em>
 				</div>
+			
 			{{/pedidos}}
 			{{^pedidos}}
 				<p>No hay pedidos aún.</p>
 			{{/pedidos}}
 		</div>
+	
 	</div>
 		
     

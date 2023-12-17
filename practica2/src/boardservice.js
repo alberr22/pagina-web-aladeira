@@ -48,6 +48,31 @@ export function editPost(oldCategory,category, post, postid) {
     
 }
 
+export function correctPost (Obj) {
+    let result = true;
+    console.log (Obj);
+    if ((!Obj.title) || (Obj.title =='')){
+        result = false ;
+    }
+    if ((!Obj.ingredients) || (Obj.ingredients =='')){
+        result = false ;
+    }
+    if ((!Obj.price) || (Obj.price =='')){
+        result = false ;
+    }
+    if ((!Obj.img) || (Obj.img =='')){
+        result = false ;
+    }
+    if ((!Obj.text) || (Obj.text =='')){
+        result = false ;
+    }
+    if ((!Obj.category) || (Obj.category =='')){
+        result = false ;
+    }
+    return result
+}
+
+
 export function deletePost(category, id) {
     posts[category].delete(id);
 }

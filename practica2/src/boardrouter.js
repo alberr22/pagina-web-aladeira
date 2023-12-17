@@ -40,8 +40,14 @@ router.get('/post/:id,:category/edit', (req, res) => {
 
 router.post('/post/new', (req, res) => {
     let {title,ingredients, price, img,text,category} = req.body;
-    boardService.addPost(category,{title, ingredients, price, img, text,category});
-    res.render('saved_post');
+
+    if  (boardService.correctPost (req.body)) {
+        boardService.addPost(category,{title, ingredients, price, img, text,category});
+        res.render('saved_post');
+    } else {
+        res.render('error_post')
+    }
+    
 });
 
 router.post('/post/:id,:category/edit', (req, res) => {
@@ -53,7 +59,9 @@ router.post('/post/:id,:category/edit', (req, res) => {
 
 router.get('/post/:id,:category', (req, res) => {
     let post = boardService.getPost(req.params.category,req.params.id);
-    res.render('show_post', { post });
+    let pedidos = boardService.getPedidos();
+
+    res.render('show_post', { post, pedidos: [...pedidos.values()] });
 });
 
 router.get('/post/:id,:category/delete', (req, res) => {
