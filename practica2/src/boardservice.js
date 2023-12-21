@@ -18,8 +18,25 @@ export function addPedidos(pedido) {
     let id = nextId++;
     pedido.id = id.toString();
     pedidos.set(pedido.id, pedido);
+    savePedidosToFile();
+}
+import fs from 'fs';
+
+const pedidosFilePath = 'pedidos.json';
+function savePedidosToFile() {
+    const pedidosArray = [...pedidos.values()];
+    fs.writeFileSync(pedidosFilePath, JSON.stringify(pedidosArray), 'utf-8');
 }
 
+function loadPedidosFromFile() {
+    try {
+        const data = fs.readFileSync(pedidosFilePath, 'utf-8');
+        const pedidosArray = JSON.parse(data);
+        pedidos = new Map(pedidosArray.map(pedido => [pedido.id, pedido]));
+    } catch (error) {
+        console.error('Error reading or parsing pedidos file:', error.message);
+    }
+}
 export function getPedidos() {
     return pedidos;
 }
@@ -30,6 +47,31 @@ export function editPost(oldCategory,category, post, postid) {
     posts[category].set(post.id, post);
     
 }
+
+export function correctPost (Obj) {
+    let result = true;
+    console.log (Obj);
+    if ((!Obj.title) || (Obj.title =='')){
+        result = false ;
+    }
+    if ((!Obj.ingredients) || (Obj.ingredients =='')){
+        result = false ;
+    }
+    if ((!Obj.price) || (Obj.price =='')){
+        result = false ;
+    }
+    if ((!Obj.img) || (Obj.img =='')){
+        result = false ;
+    }
+    if ((!Obj.text) || (Obj.text =='')){
+        result = false ;
+    }
+    if ((!Obj.category) || (Obj.category =='')){
+        result = false ;
+    }
+    return result
+}
+
 
 export function deletePost(category, id) {
     posts[category].delete(id);

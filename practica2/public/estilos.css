@@ -182,14 +182,14 @@ button.view {
     border: none;
 }
 
-.pedidocontainer{
-border: 5px solid black; 
+.orders3Container{ 
 display: flex; 
 justify-content: space-between;
 flex-wrap: wrap;
 column-gap: 10px;
 float: left; 
 padding: 5px; 
+margin-right: auto;
 } 
 
 .callos {
@@ -217,4 +217,18 @@ padding: 5px;
     text-align: center;
     width: 800px;
    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+}
+.pedido99-container{
+
+
+
+    border: 5px solid rgb(33, 106, 208); 
+    display: flex; 
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    float: left; 
+    padding: 5px; 
+    margin-right: auto;
+
 }
