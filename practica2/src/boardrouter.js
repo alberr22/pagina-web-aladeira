@@ -28,6 +28,7 @@ router.get('/post/:id,:category/edit', (req, res) => {
     res.render('edit_post', { post });
 });
 
+
 router.post('/post/new', (req, res) => {
     let {title,ingredients, price, img,text,category} = req.body;
     boardService.addPost(category,{title, ingredients, price, img, text,category});
