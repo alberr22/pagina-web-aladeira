@@ -59,7 +59,7 @@ router.post('/post/:id,:category/edit', (req, res) => {
 });
 
 router.get('/post/:id,:category', (req, res) => {
-    let post = boardService.getPost(req.params.category,req.params.id);
+    let    = boardService.getPost(req.params.category,req.params.id);
     let pedidos = boardService.getPedidos();
 
     res.render('show_post', { post, pedidos: [...pedidos.values()] });
