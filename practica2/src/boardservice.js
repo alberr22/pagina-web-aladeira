@@ -14,8 +14,9 @@ export function addPost(category, post) {
     posts[category].set(post.id, post);
 }
 
-export function addPedidos(pedido) {
+export function addPedidos(pedido, idplato) {
     let id = nextId++;
+    pedido.idplato= idplato;
     pedido.id = id.toString();
     pedidos.set(pedido.id, pedido);
     savePedidosToFile();
@@ -37,8 +38,17 @@ function loadPedidosFromFile() {
         console.error('Error reading or parsing pedidos file:', error.message);
     }
 }
-export function getPedidos() {
-    return pedidos;
+export function getPedidos(idplato) {
+    let result= new Map();
+    pedidos.forEach (function(pedido, id, pedidos){
+        if (pedido.idplato == idplato){
+            result.set(id,pedido)
+        }
+    })
+    console.log(pedidos);
+    console.log(idplato);
+    console.log(result);
+    return result;
 }
 
 export function editPost(oldCategory,category, post, postid) {

@@ -21,10 +21,10 @@ router.post('/pedido/new/:id,:category', (req, res) => {
     );
 
     if (!pedidoExistente) {
-        boardService.addPedidos(req.body);
+        boardService.addPedidos(req.body, req.params.id);
     }
 
-    pedidos = boardService.getPedidos();
+    pedidos = boardService.getPedidos(req.params.id);
     let post = boardService.getPost(req.params.category, req.params.id);
     console.log(pedidos);
     res.render('show_post', { post, pedidos: [...pedidos.values()] });
@@ -59,8 +59,8 @@ router.post('/post/:id,:category/edit', (req, res) => {
 });
 
 router.get('/post/:id,:category', (req, res) => {
-    let    = boardService.getPost(req.params.category,req.params.id);
-    let pedidos = boardService.getPedidos();
+    let post = boardService.getPost(req.params.category,req.params.id);
+    let pedidos = boardService.getPedidos(req.params.id);
 
     res.render('show_post', { post, pedidos: [...pedidos.values()] });
 });
