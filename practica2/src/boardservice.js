@@ -19,25 +19,8 @@ export function addPedidos(pedido, idplato) {
     pedido.idplato= idplato;
     pedido.id = id.toString();
     pedidos.set(pedido.id, pedido);
-    savePedidosToFile();
-}
-import fs from 'fs';
-
-const pedidosFilePath = 'pedidos.json';
-function savePedidosToFile() {
-    const pedidosArray = [...pedidos.values()];
-    fs.writeFileSync(pedidosFilePath, JSON.stringify(pedidosArray), 'utf-8');
 }
 
-function loadPedidosFromFile() {
-    try {
-        const data = fs.readFileSync(pedidosFilePath, 'utf-8');
-        const pedidosArray = JSON.parse(data);
-        pedidos = new Map(pedidosArray.map(pedido => [pedido.id, pedido]));
-    } catch (error) {
-        console.error('Error reading or parsing pedidos file:', error.message);
-    }
-}
 export function getPedidos(idplato) {
     let result= new Map();
     pedidos.forEach (function(pedido, id, pedidos){

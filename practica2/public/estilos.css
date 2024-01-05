@@ -1,3 +1,8 @@
+.platos-container {
+    display: flex;
+    flex-direction: row;
+}
+
 h1 {
     font-size: 24px;
     color: rgb(0, 0, 0);
@@ -122,6 +127,8 @@ img {
 }
 /******************************************** SHOW POST ********************************************/
 
+
+
 .descripcion-formulario {
     padding: 20px;
     box-sizing: border-box;
@@ -185,8 +192,16 @@ justify-content: space-between;
 row-gap: 10px;
 padding: 5px; 
 margin-right: auto;
-
 } 
+
+#bannerpedidos{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 24px;
+    padding: 4px; 
+    width: 40%;
+    background-color: red;
+    color: whitesmoke; 
+}
 
 .callos {
     margin-top: 10px ; 
