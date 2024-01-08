@@ -1,0 +1,253 @@
+.platos-container {
+    display: flex;
+    flex-direction: row;
+}
+
+h1 {
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.boton-anadir-plato {
+    position: absolute;
+    top: 200px;
+    right: 0;
+    margin: 50px;
+    color: rgb(255, 255, 255);
+}
+a{
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
+    font-weight: bold;
+    
+}
+.container0{
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: space-around;
+}
+.container1{
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: space-around;
+}
+.container0{
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: space-around;
+}
+img {
+    max-width: 200px; 
+    height: auto;
+    display: block;
+    margin: auto;
+    
+    border: 4px solid rgb(10, 10, 10);
+    border-radius: 10px;
+}
+
+
+.plato {
+    flex: 0 1 22%; /* Ajusta el ancho de cada plato */
+    text-align: center;
+    margin: 10px;
+}
+
+.plato img {
+    width: 200px; /* Define un ancho específico */
+    height: 200px; /* Define una altura específica */
+}
+
+.container3 {
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 500px;
+    height: 250px;
+    width: 3000px;  
+}
+.qbanner {
+    background-color: rgb(43, 43, 43); 
+    color: whitesmoke;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 30px;
+    height: 25px;
+    width: 300px;  
+}
+/* ********************************* FORM ********************************* */
+.qbanner {
+    background-color: rgb(43, 43, 43); 
+    color: whitesmoke;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 30px;
+    height: 25px;
+    width: 300px;  
+}
+#space{ 
+    height: 70px;
+}
+.f1  {
+    color:whitesmoke; 
+    font-weight: 400;
+    font-size: 15px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color:  rgb(43, 43, 43);
+    padding: 15px;
+    width: 40%;
+
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 20px;
+}
+
+.formularios{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 10%;
+    margin-right: 10% ;
+    justify-content: space-evenly;
+}
+
+#inputGroupSelect01 {
+    border-radius: 5px;
+    width: 40%;
+}
+.form-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    margin-top: 20px;
+}
+/******************************************** SHOW POST ********************************************/
+
+
+
+.descripcion-formulario {
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.descripcion-callos {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    display: flex;
+    column-gap: 10px;
+}
+
+button {
+    padding: 10px;
+}
+
+button.save {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button.create {
+    background-color: #008CBA;
+    color: white;
+}
+
+button.delete,
+button.edit,
+button.view {
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+.orders3Container{ 
+display: flex; 
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: space-between;
+row-gap: 10px;
+padding: 5px; 
+margin-right: auto;
+} 
+
+#bannerpedidos{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 24px;
+    padding: 4px; 
+    width: 120%;
+    background-color: red;
+    color: whitesmoke; 
+}
+
+.callos {
+    margin-top: 10px ; 
+    width: 40%;
+    display:center; 
+}
+
+.ordersContainer {
+    float: left;
+    margin: 10px;
+    border: 1px solid #000000;
+    padding: 10px;
+}
+
+.message{ 
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+   margin-left: 45%;
+   margin-right:45%; 
+    
+}
+
+.cancelboton{
+    text-align: center;
+    width: 800px;
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+}
+.pedido99-container{
+
+    border: 5px solid rgb(33, 106, 208); 
+    display: flex; 
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    float: left; 
+    padding: 5px; 
+    margin-right: auto;
+
+}
+
+.pedido{
+    border: 2px solid black;
+    padding: 5px ; 
+    border-radius: 3px ;
+    margin: 10px;
+}
+
+
+
