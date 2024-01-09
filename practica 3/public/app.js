@@ -42,6 +42,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// Asegúrate de que solo se llama a loadAJAX cuando se hace clic en el botón "Mostrar más"
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.load-more-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const category = this.dataset.category;
+            loadAJAX(category);
+        });
+    });
+});
+
+
 function loadMore(category) {
     loadAJAX(category);
 }

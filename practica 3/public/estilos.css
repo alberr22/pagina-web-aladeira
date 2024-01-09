@@ -125,6 +125,22 @@ img {
     justify-content: space-around; 
     margin-top: 20px;
 }
+.primerosContainer{
+    margin-top: auto;
+    margin-left: auto;
+    margin-left: auto;
+
+}
+.segundosConatiener{
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.postresContainer{
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
 /******************************************** SHOW POST ********************************************/
 
 
