@@ -27,20 +27,10 @@ async function loadAJAX(category) {
     if (shownCount < totalPlatosCount) {
         loadMoreBtn.style.display = 'block';
     } else {
+        // Si no hay más platos, oculta el botón "Mostrar más"
         loadMoreBtn.style.display = 'none';
     }
 }
-
-// Asegúrate de que solo se llama a loadAJAX cuando se hace clic en el botón "Mostrar más"
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.load-more-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const category = this.dataset.category;
-            loadAJAX(category);
-        });
-    });
-});
-
 
 // Asegúrate de que solo se llama a loadAJAX cuando se hace clic en el botón "Mostrar más"
 document.addEventListener('DOMContentLoaded', function() {
