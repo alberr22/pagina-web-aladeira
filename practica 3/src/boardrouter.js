@@ -4,13 +4,47 @@ import * as boardService from './boardservice.js';
 const router = express.Router();
 router.use(express.urlencoded({ extended: true })); // Agrega esta línea para configurar body-parser
 
+let shownPrimeros= 3;
+let shownSegundos=3;
+let shownPostres=3;
 router.get('/', (_req, res) => {
-    const primeros = boardService.getPosts('primeros');
-    const segundos = boardService.getPosts('segundos');
-    const postres = boardService.getPosts('postres');
+    const primeros = boardService.getPosts('primeros').slice(0,shownPrimeros);
+    const segundos = boardService.getPosts('segundos').slice(0,shownSegundos);
+    const postres = boardService.getPosts('postres').slice(0,shownPostres);
 
     res.render('index', { primeros, segundos, postres });
 });
+
+
+router.get('/cargar-mas', (req, res) => {
+    const { category } = req.query;
+    let result;
+
+    // Obtén los platos actualizados según la categoría
+    if (category === 'primeros') {
+        result = getUpdatedPlatos('primeros', shownPrimeros);
+        shownPrimeros += result.length;
+    } else if (category === 'segundos') {
+        result = getUpdatedPlatos('segundos', shownSegundos);
+        shownSegundos += result.length;
+    } else if (category === 'postres') {
+        result = getUpdatedPlatos('postres', shownPostres);
+        shownPostres += result.length;
+    }
+
+    // Envía la respuesta al cliente en formato JSON
+    res.json({ [category]: result });
+});
+
+// Asegúrate de devolver la cantidad correcta de platos en la función getUpdatedPlatos
+function getUpdatedPlatos(category, shownCount) {
+    const allPlatos = boardService.getPosts(category);
+    const newPlatos = allPlatos.slice(shownCount, shownCount + 1);  // Cambia el número a la cantidad que desees mostrar
+    return newPlatos;
+}
+
+
+
 
 router.post('/pedido/new/:id,:category', (req, res) => {
     let pedidos = boardService.getPedidos();
@@ -23,7 +57,7 @@ router.post('/pedido/new/:id,:category', (req, res) => {
     if (!pedidoExistente) {
         boardService.addPedidos(req.body, req.params.id);
     }
-
+    
     pedidos = boardService.getPedidos(req.params.id);
     let post = boardService.getPost(req.params.category, req.params.id);
     console.log(pedidos);
