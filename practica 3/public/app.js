@@ -46,3 +46,40 @@ document.addEventListener('DOMContentLoaded', function() {
 function loadMore(category) {
     loadAJAX(category);
 }
+// Reemplaza este bloque en tu archivo app.js
+// Modifica tu función ComprobarForm así
+
+
+
+function showAvailabilityMessage(message) {
+    // Lógica para mostrar el mensaje, por ejemplo, agregarlo a un elemento en el DOM
+    const messageElement = document.getElementById('message');
+    messageElement.innerHTML = message;
+}
+
+// Modifica tu función ComprobarForm así
+async function ComprobarForm() {
+    let titleInput = document.getElementById('title');
+    let title = titleInput.value.trim();
+
+    console.log('Título:', title); // Añade esta línea
+
+    if (title === "") {
+        // Si el título está vacío, muestra un mensaje y deshabilita el botón
+        showAvailabilityMessage('<p> El título no puede estar vacío </p>');
+        disableSubmitButton();
+        return;
+    }
+
+    // Cambia la URL a la correcta
+    const response = await fetch(`/abiableform?title=${title}`);
+    const responseObj = await response.json();
+
+    console.log('Respuesta del servidor:', responseObj); // Añade esta línea
+
+    let message = responseObj.aviable ?
+        '<p> Disponible </p>' :
+        '<p> No disponible </p>';
+
+    showAvailabilityMessage(message);
+}

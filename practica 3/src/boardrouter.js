@@ -3,7 +3,7 @@ import * as boardService from './boardservice.js';
 
 const router = express.Router();
 router.use(express.urlencoded({ extended: true })); // Agrega esta línea para configurar body-parser
-
+let existingplatos= ['callos'];
 let shownPrimeros= 3;
 let shownSegundos=3;
 let shownPostres=3;
@@ -14,6 +14,17 @@ router.get('/', (_req, res) => {
 
     res.render('index', { primeros, segundos, postres });
 });
+
+router.get('/abiableform', (req, res) => {
+    let title = req.query.title;
+    let availableForm = existingplatos.indexOf(title) === -1;
+    let response = {
+        aviable: availableForm
+    }
+    res.json(response)
+});
+
+
 
 
 router.get('/cargar-mas', (req, res) => {
