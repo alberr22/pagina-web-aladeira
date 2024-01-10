@@ -33,53 +33,99 @@ async function loadAJAX(category) {
 }
 
 // Asegúrate de que solo se llama a loadAJAX cuando se hace clic en el botón "Mostrar más"
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.load-more-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             const category = this.dataset.category;
             loadAJAX(category);
         });
     });
 });
 
-
 function loadMore(category) {
     loadAJAX(category);
 }
+
 // Reemplaza este bloque en tu archivo app.js
 // Modifica tu función ComprobarForm así
-
-
-
-function showAvailabilityMessage(message) {
-    // Lógica para mostrar el mensaje, por ejemplo, agregarlo a un elemento en el DOM
-    const messageElement = document.getElementById('message');
-    messageElement.innerHTML = message;
+function showAvailabilityAndIngredientsAndpriceMessage(availabilityMessage, ingredientsMessage, priceMessage) {
+    const availabilityElement = document.getElementById('availabilityMessage');
+    const ingredientsElement = document.getElementById('ingredientsMessage');
+    const priceElement = document.getElementById('priceMessage');  // Corregido: 'priceMessage' en lugar de 'pricemessage'
+    availabilityElement.innerHTML = availabilityMessage;
+    ingredientsElement.innerHTML = ingredientsMessage;
+    priceElement.innerHTML = priceMessage;
 }
-
-// Modifica tu función ComprobarForm así
+function disableSubmitButton() {
+    // Lógica para deshabilitar el botón de envío, por ejemplo:
+    const submitButton = document.getElementById('submitBtn');
+    if (submitButton) {
+        submitButton.disabled = true;
+    }
+}
 async function ComprobarForm() {
+    // Resetear mensajes
+    showAvailabilityAndIngredientsAndpriceMessage('', '', '');
+
+    // Comprobar título
     let titleInput = document.getElementById('title');
     let title = titleInput.value.trim();
 
-    console.log('Título:', title); // Añade esta línea
+    console.log('Título:', title);
 
+    // Mostrar mensaje si el título está vacío
     if (title === "") {
-        // Si el título está vacío, muestra un mensaje y deshabilita el botón
-        showAvailabilityMessage('<p> El título no puede estar vacío </p>');
+        showAvailabilityAndIngredientsAndpriceMessage('<p> El título no puede estar vacío </p>', '', '');
         disableSubmitButton();
         return;
     }
 
-    // Cambia la URL a la correcta
+    // Comprobar disponibilidad del título
     const response = await fetch(`/abiableform?title=${title}`);
     const responseObj = await response.json();
 
-    console.log('Respuesta del servidor:', responseObj); // Añade esta línea
+    console.log('Respuesta del servidor:', responseObj);
 
-    let message = responseObj.aviable ?
+    let availabilityMessage = responseObj.aviable ?
         '<p> Disponible </p>' :
         '<p> No disponible </p>';
 
-    showAvailabilityMessage(message);
+    // Mostrar mensaje de disponibilidad
+    showAvailabilityAndIngredientsAndpriceMessage(availabilityMessage, '', '');
+
+    // Comprobar ingredientes
+    let ingredientsInput = document.getElementById('ingredients');
+    let ingredients = ingredientsInput.value.trim();
+    console.log('Ingredientes:', ingredients);
+
+    // Mostrar mensaje si los ingredientes están vacíos
+    if (ingredients === "") {
+        showAvailabilityAndIngredientsAndpriceMessage(
+            document.getElementById('availabilityMessage').innerHTML,
+            '<p> Los ingredientes no pueden estar vacíos </p>',
+            document.getElementById('priceMessage').innerHTML
+        );
+        disableSubmitButton();
+        return;
+    }
+
+    // Comprobar precio
+    let priceInput = document.getElementById('price');
+    let price = priceInput.value.trim();
+    console.log('Precio:', price);
+
+    // Mostrar mensaje si el precio está vacío
+    if (price === "") {
+        showAvailabilityAndIngredientsAndpriceMessage(
+            document.getElementById('availabilityMessage').innerHTML,
+            document.getElementById('ingredientsMessage').innerHTML,
+            '<p> El precio no puede estar vacío </p>'
+        );
+        disableSubmitButton();
+        return;
+    }
+
+    // Limpiar mensajes si todo está bien
+    showAvailabilityAndIngredientsAndpriceMessage('<p> Disponible </p>', '', '');
 }
+

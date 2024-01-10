@@ -17,12 +17,16 @@ router.get('/', (_req, res) => {
 
 router.get('/abiableform', (req, res) => {
     let title = req.query.title;
-    let availableForm = existingplatos.indexOf(title) === -1;
+    
+    // Verificar si el título es una cadena no vacía antes de considerarlo
+    let availableForm = title && title.trim() !== '' && existingplatos.indexOf(title) === -1;
+
     let response = {
         aviable: availableForm
-    }
+    } 
     res.json(response)
 });
+
 
 
 
