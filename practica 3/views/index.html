@@ -52,7 +52,7 @@
 	  <!--Boton-->
 	  <div class="container boton-anadirplato">
         <div class="item nuevoplato">
-            <a href="detail.html"><button type="button" class="btn btn-dark boton-anadir-plato">Añadir Nuevo Plato</button></a>
+            <button data-bs-toggle="modal" type="button" data-bs-target="#modalnuevoproducto" class="btn btn-dark boton-anadir-plato">Añadir Nuevo Plato</button>
         </div>  
 		<p id="space"></p> 
     </div>		
@@ -114,6 +114,68 @@
 		<button  class="btn btn-dark" onclick='loadMore("postres")'>Mostrar mas postres</button>
     </div>
 </div>
+
+
+<div class="modal fade" data-bs-backdrop="static" id="modalnuevoproducto" tabindex="-1"
+        aria-labelledby="modalnuevoproducto" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="modal-title text-danger" id="exampleModalLabel">AÑADIR PRODUCTO</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+						
+                <div class="modal-body">
+					<form action="post/new" method="post" class="formulario" role="form">
+						<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
+							<label for="title" class="form-label ">Titulo</label>
+							<input id="title" onblur='ComprobarForm("title")' type="text" placeholder="Introduzca el nombre del plato" class="form-control" name="title"  />
+							<div id="availabilityMessage"></div>
+						</div>
+					<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
+						<label for="ingredients">Ingredientes</label>
+						<input id="ingredients" onblur='ComprobarForm("ingredients")' type="text" placeholder="Introduzca los ingredientes" class="form-control" name="ingredients"  />
+					<div id="ingredientsMessage"></div>
+					<div class="form-group" style="margin-bottom: 10px">
+						<label for="price">Precio (€):</label>
+						<input id="price" onblur='ComprobarForm("price")' name='price' class="form-control" placeholder="Introduzca el precio del plato" min="0" name="price" />
+						<div id="priceMessage"></div>
+					</div>
+					<div class="form-group" style="margin-bottom: 10 px">
+					<label for="category">Tipo:</label>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+						  <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
+						</div>
+						<select class="custom-select" id="inputGroupSelect01" name="category" >
+						  <option value ="primeros" selected>Primer plato</option>
+						  <option value="primeros">Segundo plato</option>
+						  <option value="segundos">Tercer plato</option>
+						  <div style="margin-bottom: 10px" method="post" class="form-group" role="form">
+							<label for="img" class="form-label ">Imagen</label>
+							<input type="text" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="img" />
+						</div>
+					<div class="form-group">
+						<label for="ExampleFormControlTextarea1"> Descripcion del plato</label>
+						<textarea type="text" class="form-control" id="exampleFormControlTextarea1" cols="59" rows="6" name="text"></textarea>
+						</select>
+					</div>
+				</div>
+			</div>
+			<p id="space"></p>
+			<input type='submit'id="submitBtn" value='Save' name="submit" disabled/>
+			<p id="space"></p>
+				<a href="/"><button type="button" class="btn btn-dark">Cancelar</button></a>
+			</form>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+	
+
 		  <!--FOOTER-->
 		  <footer class="bg-light text-dark pt-5 pb-4">
 			<div class="container">

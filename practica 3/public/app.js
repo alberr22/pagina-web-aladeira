@@ -1,3 +1,15 @@
+var plato = {
+    title: false, 
+    ingredients: false,
+    price: true,
+
+    
+}
+var cesta ={
+
+}
+
+
 async function loadAJAX(category) {
     const response = await fetch(`/cargar-mas?category=${category}`);
     const data = await response.json();
@@ -59,14 +71,19 @@ function showAvailabilityAndIngredientsAndpriceMessage(availabilityMessage, ingr
 function disableSubmitButton() {
     // Lógica para deshabilitar el botón de envío, por ejemplo:
     const submitButton = document.getElementById('submitBtn');
-    if (submitButton) {
+    if ((plato.title) && (plato.ingredients) && (plato.price)){
+        submitButton.disabled= false;
+    } else{
         submitButton.disabled = true;
     }
+    console.log(plato);
 }
-async function ComprobarForm() {
+async function ComprobarForm(campo) {
     // Resetear mensajes
-    showAvailabilityAndIngredientsAndpriceMessage('', '', '');
+    
+    //showAvailabilityAndIngredientsAndpriceMessage('', '', '');
 
+    if (campo== "title") {
     // Comprobar título
     let titleInput = document.getElementById('title');
     let title = titleInput.value.trim();
@@ -75,7 +92,10 @@ async function ComprobarForm() {
 
     // Mostrar mensaje si el título está vacío
     if (title === "") {
-        showAvailabilityAndIngredientsAndpriceMessage('<p> El título no puede estar vacío </p>', '', '');
+        //showAvailabilityAndIngredientsAndpriceMessage('<p> El título no puede estar vacío </p>', '', '');
+        const availabilityElement = document.getElementById('availabilityMessage');
+        availabilityElement.innerHTML = "<p> El título no puede estar vacío </p>";
+        plato.title=false;
         disableSubmitButton();
         return;
     }
@@ -85,29 +105,38 @@ async function ComprobarForm() {
     const responseObj = await response.json();
 
     console.log('Respuesta del servidor:', responseObj);
+        plato.title=false;
+        
+       let mensaje =  '<p> No disponible </p>';
 
-    let availabilityMessage = responseObj.aviable ?
-        '<p> Disponible </p>' :
-        '<p> No disponible </p>';
-
+       if (responseObj.aviable ){
+            mensaje = '<p> Disponible </p>';
+            plato.title= true;
+       } 
+       const availabilityElement = document.getElementById('availabilityMessage');
+        availabilityElement.innerHTML = mensaje;
+        disableSubmitButton();
     // Mostrar mensaje de disponibilidad
-    showAvailabilityAndIngredientsAndpriceMessage(availabilityMessage, '', '');
-
+    //showAvailabilityAndIngredientsAndpriceMessage(availabilityMessage, '', '');
+} else if ( campo == "ingredients") {
     // Comprobar ingredientes
-    let ingredientsInput = document.getElementById('ingredients');
+    /*let ingredientsInput = document.getElementById('ingredients');
     let ingredients = ingredientsInput.value.trim();
-    console.log('Ingredientes:', ingredients);
+    console.log('ingredientes:', ingredients);
 
     // Mostrar mensaje si los ingredientes están vacíos
     if (ingredients === "") {
-        showAvailabilityAndIngredientsAndpriceMessage(
+        /*showAvailabilityAndIngredientsAndpriceMessage(
             document.getElementById('availabilityMessage').innerHTML,
             '<p> Los ingredientes no pueden estar vacíos </p>',
             document.getElementById('priceMessage').innerHTML
         );
         disableSubmitButton();
         return;
-    }
+        }*/
+       return(checkIngredients()); 
+} else if (campo == "price") {
+
 
     // Comprobar precio
     let priceInput = document.getElementById('price');
@@ -116,16 +145,40 @@ async function ComprobarForm() {
 
     // Mostrar mensaje si el precio está vacío
     if (price === "") {
-        showAvailabilityAndIngredientsAndpriceMessage(
+        /*showAvailabilityAndIngredientsAndpriceMessage(
             document.getElementById('availabilityMessage').innerHTML,
             document.getElementById('ingredientsMessage').innerHTML,
             '<p> El precio no puede estar vacío </p>'
-        );
+        );*/
+        
         disableSubmitButton();
         return;
     }
 
     // Limpiar mensajes si todo está bien
-    showAvailabilityAndIngredientsAndpriceMessage('<p> Disponible </p>', '', '');
+    //
+    //showAvailabilityAndIngredientsAndpriceMessage('<p> Disponible </p>', '', '');
+}
 }
 
+ function checkIngredients(){
+    let ingredientsInput = document.getElementById('ingredients');
+    let ingredients = ingredientsInput.value.trim();
+    console.log('ingredientes:', ingredients);
+
+    // Mostrar mensaje si los ingredientes están vacíos
+    if (ingredients === "") {
+       
+        const mensajeIngredientes = document.getElementById('ingredientsMessage');
+        mensajeIngredientes.innerHTML = '<p> Los ingredientes no pueden estar vacíos </p>';
+        plato.ingredients=false;
+        
+        
+    } else {
+        const mensajeIngredientes = document.getElementById('ingredientsMessage');
+        mensajeIngredientes.innerHTML = '';
+        plato.ingredients=true;
+    }
+    disableSubmitButton();
+    return;
+}

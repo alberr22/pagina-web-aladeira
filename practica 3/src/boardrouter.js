@@ -29,8 +29,6 @@ router.get('/abiableform', (req, res) => {
 
 
 
-
-
 router.get('/cargar-mas', (req, res) => {
     const { category } = req.query;
     let result;
