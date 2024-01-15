@@ -143,28 +143,33 @@
 						<div id="priceMessage"></div>
 					</div>
 					<div class="form-group" style="margin-bottom: 10 px">
-					<label for="category">Tipo:</label>
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-						  <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
-						</div>
-						<select class="custom-select" id="inputGroupSelect01" name="category" >
-						  <option value ="primeros" selected>Primer plato</option>
-						  <option value="primeros">Segundo plato</option>
-						  <option value="segundos">Tercer plato</option>
-						  <div style="margin-bottom: 10px" method="post" class="form-group" role="form">
-							<label for="img" class="form-label ">Imagen</label>
-							<input type="text" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="img" />
-						</div>
-					<div class="form-group">
-						<label for="ExampleFormControlTextarea1"> Descripcion del plato</label>
-						<textarea type="text" class="form-control" id="exampleFormControlTextarea1" cols="59" rows="6" name="text"></textarea>
-						</select>
-					</div>
-				</div>
+		<label for="category">Tipo:</label>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+			  <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
+			</div>
+			<select class="custom-select" id="inputGroupSelect01" name="category" >
+			  <option value ="primeros" selected>Primer plato</option>
+			  <option value="primeros">Segundo plato</option>
+			  <option value="segundos">Tercer plato</option>
+			</select>
+		  </div>
+		</div>
+
+	<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
+		<label for="img" class="form-label ">Imagen</label>
+		<input onblur='ComprobarForm("rutaImagen")' id="rutaImagen" type="text" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="rutaImagen" />
+	</div id=rutaImagen></div>
+<div class="form-group">
+	<label for="ExampleFormControlTextarea1"> Descripcion del plato</label>
+	<textarea type="text" class="form-control" id="exampleFormControlTextarea1" cols="59" rows="6" name="text"></textarea>
+
+	
+</div>
 			</div>
 			<p id="space"></p>
 			<input type='submit'id="submitBtn" value='Save' name="submit" disabled/>
+
 			<p id="space"></p>
 				<a href="/"><button type="button" class="btn btn-dark">Cancelar</button></a>
 			</form>

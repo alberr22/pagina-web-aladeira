@@ -1,10 +1,11 @@
 var plato = {
     title: false, 
     ingredients: false,
-    price: true,
+    price: false,
+    rutaImagen:false ,
 
     
-}
+};
 var cesta ={
 
 }
@@ -71,7 +72,7 @@ function showAvailabilityAndIngredientsAndpriceMessage(availabilityMessage, ingr
 function disableSubmitButton() {
     // Lógica para deshabilitar el botón de envío, por ejemplo:
     const submitButton = document.getElementById('submitBtn');
-    if ((plato.title) && (plato.ingredients) && (plato.price)){
+    if ((plato.title) && (plato.ingredients) && (plato.price) && (plato.ruta)){
         submitButton.disabled= false;
     } else{
         submitButton.disabled = true;
@@ -118,48 +119,21 @@ async function ComprobarForm(campo) {
         disableSubmitButton();
     // Mostrar mensaje de disponibilidad
     //showAvailabilityAndIngredientsAndpriceMessage(availabilityMessage, '', '');
-} else if ( campo == "ingredients") {
-    // Comprobar ingredientes
-    /*let ingredientsInput = document.getElementById('ingredients');
-    let ingredients = ingredientsInput.value.trim();
-    console.log('ingredientes:', ingredients);
+    } else if ( campo == "ingredients") {
 
-    // Mostrar mensaje si los ingredientes están vacíos
-    if (ingredients === "") {
-        /*showAvailabilityAndIngredientsAndpriceMessage(
-            document.getElementById('availabilityMessage').innerHTML,
-            '<p> Los ingredientes no pueden estar vacíos </p>',
-            document.getElementById('priceMessage').innerHTML
-        );
-        disableSubmitButton();
-        return;
-        }*/
-       return(checkIngredients()); 
-} else if (campo == "price") {
+        return(checkIngredients());
 
+    } else if (campo == "price") {
 
-    // Comprobar precio
-    let priceInput = document.getElementById('price');
-    let price = priceInput.value.trim();
-    console.log('Precio:', price);
+        return(checkPrice());
 
-    // Mostrar mensaje si el precio está vacío
-    if (price === "") {
-        /*showAvailabilityAndIngredientsAndpriceMessage(
-            document.getElementById('availabilityMessage').innerHTML,
-            document.getElementById('ingredientsMessage').innerHTML,
-            '<p> El precio no puede estar vacío </p>'
-        );*/
-        
-        disableSubmitButton();
-        return;
+    } else if (campo == "rutaImagen"){
+
+        return(checkRutaImagen());
     }
 
-    // Limpiar mensajes si todo está bien
-    //
-    //showAvailabilityAndIngredientsAndpriceMessage('<p> Disponible </p>', '', '');
-}
-}
+    }
+
 
  function checkIngredients(){
     let ingredientsInput = document.getElementById('ingredients');
@@ -174,11 +148,54 @@ async function ComprobarForm(campo) {
         plato.ingredients=false;
         
         
-    } else {
+    }else {
         const mensajeIngredientes = document.getElementById('ingredientsMessage');
         mensajeIngredientes.innerHTML = '';
         plato.ingredients=true;
     }
     disableSubmitButton();
     return;
+}
+
+function checkPrice (){
+    let priceInput = document.getElementById ('price');
+    let price = priceInput.value.trim();
+    console.log('price', price);
+
+    if (price === ""){
+        const mensajePrecio = document.getElementById('priceMessage');
+        mensajePrecio.innerHTML = '<p> El precio no puede estra vacio </p>';
+        plato.price= false; 
+    } else if (isNaN(Number(price))){
+        const mensajePrecio= document.getElementById('priceMessage');
+        mensajePrecio.innerHTML = '<p> El precio debe der un numero</p>';
+        plato.price=false;
+    } else {
+        const mensajePrecio= document.getElementById('priceMessage')
+        mensajePrecio.innerHTML= '';
+        plato.price= true;
+    }
+    disableSubmitButton();
+    return;
+}
+
+function checkRutaImagen (){
+    let rutaInput = document.getElementById('rutaImagen');
+    let rutaImagen = rutaInput.value.trim();
+
+    console.log('rutaImagen', rutaImagen);
+
+    if (rutaImagen === ""){
+        const mensajeRuta = document.getElementById('rutaImagenMessage');
+        mensajeRuta.innerHTML = '<p> La ruta de la imagen no puede estar vacia </p>';
+        plato.rutaImagen= false;
+    } else {
+        const mensajeRuta = document.getElementById('rutaImagenMessage');
+        mensajeRuta.innerHTML = '';
+        plato.rutaImagen= true;
+
+    }
+    disableSubmitButton();
+    return;
+
 }
