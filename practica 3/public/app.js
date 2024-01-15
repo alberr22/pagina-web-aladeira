@@ -2,8 +2,7 @@ var plato = {
     title: false, 
     ingredients: false,
     price: false,
-    ruta:false ,
-    descripcion: false,
+    rutaImagen:false ,
 
     
 };
@@ -13,10 +12,10 @@ var cesta ={
 
 
 async function loadAJAX(category) {
-    const response = await fetch('/cargar-mas?category=${category}');
+    const response = await fetch(`/cargar-mas?category=${category}`);
     const data = await response.json();
 
-    const container = document.getElementById('${category}Container');
+    const container = document.getElementById(`${category}Container`);
     const platosContainer = container.querySelector('.platos-container');
     const loadMoreBtn = container.querySelector('.load-more-btn');
 
