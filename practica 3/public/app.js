@@ -9,9 +9,7 @@ var plato = {
 var cesta ={
 
 }
-
-
-async function loadAJAX(category) {
+async function loadAJAX(category, initialLoad = false) {
     const response = await fetch(`/cargar-mas?category=${category}`);
     const data = await response.json();
 
@@ -19,7 +17,12 @@ async function loadAJAX(category) {
     const platosContainer = container.querySelector('.platos-container');
     const loadMoreBtn = container.querySelector('.load-more-btn');
 
-    // Renderiza los nuevos platos en el contenedor existente
+    // Si es una carga inicial, limpia el contenedor antes de agregar nuevos elementos
+    if (initialLoad) {
+        platosContainer.innerHTML = '';
+    }
+
+    // Renderiza los platos en el contenedor
     data[category].forEach(plato => {
         const platoHTML = `
             <div class="plato">
@@ -32,20 +35,15 @@ async function loadAJAX(category) {
 
     // Actualiza la cantidad de platos mostrados
     const shownCount = platosContainer.querySelectorAll('.plato').length;
-
-    // Obtiene el recuento total de platos en la categoría
     const totalPlatosCount = data[category].length;
 
     // Si hay más platos para mostrar, muestra el botón "Mostrar más"
     if (shownCount < totalPlatosCount) {
         loadMoreBtn.style.display = 'block';
-    } else {
-        // Si no hay más platos, oculta el botón "Mostrar más"
-        loadMoreBtn.style.display = 'none';
-    }
+    } 
 }
 
-// Asegúrate de que solo se llama a loadAJAX cuando se hace clic en el botón "Mostrar más"
+// Modifica el evento del botón "Mostrar más" para llamar a loadAJAX con la categoría correspondiente
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.load-more-btn').forEach(btn => {
         btn.addEventListener('click', function () {
@@ -55,20 +53,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
+
 function loadMore(category) {
     loadAJAX(category);
 }
 
-// Reemplaza este bloque en tu archivo app.js
-// Modifica tu función ComprobarForm así
-function showAvailabilityAndIngredientsAndpriceMessage(availabilityMessage, ingredientsMessage, priceMessage) {
-    const availabilityElement = document.getElementById('availabilityMessage');
-    const ingredientsElement = document.getElementById('ingredientsMessage');
-    const priceElement = document.getElementById('priceMessage');  // Corregido: 'priceMessage' en lugar de 'pricemessage'
-    availabilityElement.innerHTML = availabilityMessage;
-    ingredientsElement.innerHTML = ingredientsMessage;
-    priceElement.innerHTML = priceMessage;
-}
+
 function disableSubmitButton() {
     // Lógica para deshabilitar el botón de envío, por ejemplo:
     const submitButton = document.getElementById('submitBtn');
