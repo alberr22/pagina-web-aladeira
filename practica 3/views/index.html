@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -156,16 +156,16 @@
 		  </div>
 		</div>
 
-	<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
-		<label for="img" class="form-label ">Imagen</label>
-		<input onblur='ComprobarForm("rutaImagen")' id="rutaImagen" type="text" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="rutaImagen" />
-	</div id=rutaImagen></div>
-<div class="form-group">
-	<label for="ExampleFormControlTextarea1"> Descripcion del plato</label>
-	<textarea type="text" class="form-control" id="exampleFormControlTextarea1" cols="59" rows="6" name="text"></textarea>
-
-	
-</div>
+		<div style="margin-bottom: 10px" method="post" class="form-group" role="form">
+			<label for="ruta" class="form-label">Imagen</label>
+			<input onblur='ComprobarForm("ruta")' id="ruta" placeholder="Introduzca la ruta de la imagen del plato" class="form-control" name="ruta" />
+			<div id="rutaMessage"></div> <!-- Movido el cierre del div fuera del atributo id -->
+		</div>
+		<div class="form-group">
+			<label for="descripcion">Descripción del plato</label>
+			<textarea onblur='ComprobarForm("descripcion")' id="descripcion" class="form-control" cols="59" rows="6" name="Descripcion"></textarea>
+			<div id="descripcionMessage"></div>
+		</div>
 			</div>
 			<p id="space"></p>
 			<input type='submit'id="submitBtn" value='Save' name="submit" disabled/>

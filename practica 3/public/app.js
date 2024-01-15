@@ -2,7 +2,8 @@ var plato = {
     title: false, 
     ingredients: false,
     price: false,
-    rutaImagen:false ,
+    ruta:false ,
+    descripcion: false,
 
     
 };
@@ -12,10 +13,10 @@ var cesta ={
 
 
 async function loadAJAX(category) {
-    const response = await fetch(`/cargar-mas?category=${category}`);
+    const response = await fetch('/cargar-mas?category=${category}');
     const data = await response.json();
 
-    const container = document.getElementById(`${category}Container`);
+    const container = document.getElementById('${category}Container');
     const platosContainer = container.querySelector('.platos-container');
     const loadMoreBtn = container.querySelector('.load-more-btn');
 
@@ -72,7 +73,7 @@ function showAvailabilityAndIngredientsAndpriceMessage(availabilityMessage, ingr
 function disableSubmitButton() {
     // Lógica para deshabilitar el botón de envío, por ejemplo:
     const submitButton = document.getElementById('submitBtn');
-    if ((plato.title) && (plato.ingredients) && (plato.price) && (plato.ruta)){
+    if ((plato.title) && (plato.ingredients) && (plato.price) && (plato.ruta) && (plato.descripcion)){
         submitButton.disabled= false;
     } else{
         submitButton.disabled = true;
@@ -99,10 +100,18 @@ async function ComprobarForm(campo) {
         plato.title=false;
         disableSubmitButton();
         return;
+    } else if (!/^[A-Z]/.test(title)) {
+        // Check if the first letter is not uppercase
+        const availabilityElement = document.getElementById('availabilityMessage');
+        availabilityElement.innerHTML = "<p> La primera letra del título debe estar en mayúscula </p>";
+        plato.title = false;
+        disableSubmitButton();
+        return;
+
     }
 
     // Comprobar disponibilidad del título
-    const response = await fetch(`/abiableform?title=${title}`);
+    const response = await fetch('/abiableform?title=${title}');
     const responseObj = await response.json();
 
     console.log('Respuesta del servidor:', responseObj);
@@ -127,11 +136,13 @@ async function ComprobarForm(campo) {
 
         return(checkPrice());
 
-    } else if (campo == "rutaImagen"){
+    } else if (campo == "ruta"){
 
-        return(checkRutaImagen());
+        return(checkRuta());
     }
-
+        if (campo == "descripcion") {
+            return checkDescripcion();  // Llamamos directamente a la función checkDescripcion
+        }
     }
 
 
@@ -179,23 +190,48 @@ function checkPrice (){
     return;
 }
 
-function checkRutaImagen (){
-    let rutaInput = document.getElementById('rutaImagen');
-    let rutaImagen = rutaInput.value.trim();
+function checkRuta (){
+    let rutaInput = document.getElementById ('ruta');
+    let ruta = rutaInput.value.trim();
+    console.log('ruta:', ruta);
+    const mensajeRuta = document.getElementById('rutaMessage');
+    const regex = /^https:\/\/.*\.jpg$/;
 
-    console.log('rutaImagen', rutaImagen);
-
-    if (rutaImagen === ""){
-        const mensajeRuta = document.getElementById('rutaImagenMessage');
-        mensajeRuta.innerHTML = '<p> La ruta de la imagen no puede estar vacia </p>';
-        plato.rutaImagen= false;
+    if (ruta === ""){
+        const mensajeRuta = document.getElementById('rutaMessage');
+        mensajeRuta.innerHTML = '<p>La ruta de la imagen del plato no puede estar vacia </p>';
+        plato.ruta= false; 
+    } else if (!regex.test(ruta)) {
+        mensajeRuta.innerHTML = '<p>La ruta debe comenzar con "https://" y terminar con ".jpg"</p>';
+        plato.ruta = false;
     } else {
-        const mensajeRuta = document.getElementById('rutaImagenMessage');
-        mensajeRuta.innerHTML = '';
-        plato.rutaImagen= true;
-
+        const mensajeRuta= document.getElementById('rutaMessage');
+        mensajeRuta.innerHTML= '';
+        plato.ruta= true;
     }
     disableSubmitButton();
     return;
+}
 
+function checkDescripcion() {
+    let descripcionInput = document.getElementById('descripcion');
+    let descripcion = descripcionInput.value.trim();
+
+    console.log('Descripcion:', descripcion);
+    const descriptionLength = descripcion.length;
+    const mensajeDescripcion = document.getElementById('descripcionMessage');
+
+    if (!descripcion) {
+        mensajeDescripcion.innerHTML = 'La descripción del plato no puede estar vacía';
+        plato.descripcion = false;
+    } else if (descriptionLength < 50 || descriptionLength > 500) {
+        mensajeDescripcion.innerHTML = 'La descripción debe tener entre 50 y 500 caracteres';
+        plato.descripcion = false;
+    } else {
+        mensajeDescripcion.innerHTML = '';
+        plato.descripcion = true;
+    }
+
+    disableSubmitButton();
+    return;
 }
