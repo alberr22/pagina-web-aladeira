@@ -1,16 +1,15 @@
 var plato = {
     title: false, 
     ingredients: false,
-    price: true,
+    price: false,
+    rutaImagen:false ,
 
     
-}
+};
 var cesta ={
 
 }
-
-
-async function loadAJAX(category) {
+async function loadAJAX(category, initialLoad = false) {
     const response = await fetch(`/cargar-mas?category=${category}`);
     const data = await response.json();
 
@@ -18,7 +17,12 @@ async function loadAJAX(category) {
     const platosContainer = container.querySelector('.platos-container');
     const loadMoreBtn = container.querySelector('.load-more-btn');
 
-    // Renderiza los nuevos platos en el contenedor existente
+    // Si es una carga inicial, limpia el contenedor antes de agregar nuevos elementos
+    if (initialLoad) {
+        platosContainer.innerHTML = '';
+    }
+
+    // Renderiza los platos en el contenedor
     data[category].forEach(plato => {
         const platoHTML = `
             <div class="plato">
@@ -31,20 +35,15 @@ async function loadAJAX(category) {
 
     // Actualiza la cantidad de platos mostrados
     const shownCount = platosContainer.querySelectorAll('.plato').length;
-
-    // Obtiene el recuento total de platos en la categoría
     const totalPlatosCount = data[category].length;
 
     // Si hay más platos para mostrar, muestra el botón "Mostrar más"
     if (shownCount < totalPlatosCount) {
         loadMoreBtn.style.display = 'block';
-    } else {
-        // Si no hay más platos, oculta el botón "Mostrar más"
-        loadMoreBtn.style.display = 'none';
-    }
+    } 
 }
 
-// Asegúrate de que solo se llama a loadAJAX cuando se hace clic en el botón "Mostrar más"
+// Modifica el evento del botón "Mostrar más" para llamar a loadAJAX con la categoría correspondiente
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.load-more-btn').forEach(btn => {
         btn.addEventListener('click', function () {
@@ -54,24 +53,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
+
 function loadMore(category) {
     loadAJAX(category);
 }
 
-// Reemplaza este bloque en tu archivo app.js
-// Modifica tu función ComprobarForm así
-function showAvailabilityAndIngredientsAndpriceMessage(availabilityMessage, ingredientsMessage, priceMessage) {
-    const availabilityElement = document.getElementById('availabilityMessage');
-    const ingredientsElement = document.getElementById('ingredientsMessage');
-    const priceElement = document.getElementById('priceMessage');  // Corregido: 'priceMessage' en lugar de 'pricemessage'
-    availabilityElement.innerHTML = availabilityMessage;
-    ingredientsElement.innerHTML = ingredientsMessage;
-    priceElement.innerHTML = priceMessage;
-}
+
 function disableSubmitButton() {
     // Lógica para deshabilitar el botón de envío, por ejemplo:
     const submitButton = document.getElementById('submitBtn');
-    if ((plato.title) && (plato.ingredients) && (plato.price)){
+    if ((plato.title) && (plato.ingredients) && (plato.price) && (plato.ruta) && (plato.descripcion)){
         submitButton.disabled= false;
     } else{
         submitButton.disabled = true;
@@ -98,10 +90,18 @@ async function ComprobarForm(campo) {
         plato.title=false;
         disableSubmitButton();
         return;
+    } else if (!/^[A-Z]/.test(title)) {
+        // Check if the first letter is not uppercase
+        const availabilityElement = document.getElementById('availabilityMessage');
+        availabilityElement.innerHTML = "<p> La primera letra del título debe estar en mayúscula </p>";
+        plato.title = false;
+        disableSubmitButton();
+        return;
+
     }
 
     // Comprobar disponibilidad del título
-    const response = await fetch(`/abiableform?title=${title}`);
+    const response = await fetch('/abiableform?title=${title}');
     const responseObj = await response.json();
 
     console.log('Respuesta del servidor:', responseObj);
@@ -118,49 +118,22 @@ async function ComprobarForm(campo) {
         disableSubmitButton();
     // Mostrar mensaje de disponibilidad
     //showAvailabilityAndIngredientsAndpriceMessage(availabilityMessage, '', '');
-} else if ( campo == "ingredients") {
-    // Comprobar ingredientes
-    /*let ingredientsInput = document.getElementById('ingredients');
-    let ingredients = ingredientsInput.value.trim();
-    console.log('ingredientes:', ingredients);
+    } else if ( campo == "ingredients") {
 
-    // Mostrar mensaje si los ingredientes están vacíos
-    if (ingredients === "") {
-        /*showAvailabilityAndIngredientsAndpriceMessage(
-            document.getElementById('availabilityMessage').innerHTML,
-            '<p> Los ingredientes no pueden estar vacíos </p>',
-            document.getElementById('priceMessage').innerHTML
-        );
-        disableSubmitButton();
-        return;
-        }*/
-       return(checkIngredients()); 
-} else if (campo == "price") {
+        return(checkIngredients());
 
+    } else if (campo == "price") {
 
-    // Comprobar precio
-    let priceInput = document.getElementById('price');
-    let price = priceInput.value.trim();
-    console.log('Precio:', price);
+        return(checkPrice());
 
-    // Mostrar mensaje si el precio está vacío
-    if (price === "") {
-        /*showAvailabilityAndIngredientsAndpriceMessage(
-            document.getElementById('availabilityMessage').innerHTML,
-            document.getElementById('ingredientsMessage').innerHTML,
-            '<p> El precio no puede estar vacío </p>'
-        );*/
-        
-        disableSubmitButton();
-        return;
+    } else if (campo == "ruta"){
+
+        return(checkRuta());
     }
-
-    // Limpiar mensajes si todo está bien
-    //
-    //showAvailabilityAndIngredientsAndpriceMessage('<p> Disponible </p>', '', '');
-}
-}
-
+        if (campo == "descripcion") {
+            return checkDescripcion();  // Llamamos directamente a la función checkDescripcion
+        }
+    }
 
 
  function checkIngredients(){
@@ -176,7 +149,7 @@ async function ComprobarForm(campo) {
         plato.ingredients=false;
         
         
-    } else {
+    }else {
         const mensajeIngredientes = document.getElementById('ingredientsMessage');
         mensajeIngredientes.innerHTML = '';
         plato.ingredients=true;
@@ -185,34 +158,70 @@ async function ComprobarForm(campo) {
     return;
 }
 
-//SCRIPT PARA INDEX - CARRITO COMPRA 
-document.addEventListener('DOMContentLoaded', function () {
-    const btnCart = document.querySelector('.container-icon');
-    console.log(btnCart); 
-    const containerCartProducts = document.querySelector('.container-cart-products');
+function checkPrice (){
+    let priceInput = document.getElementById ('price');
+    let price = priceInput.value.trim();
+    console.log('price', price);
 
-    btnCart.addEventListener('click', () => {
-        containerCartProducts.classList.toggle('hidden-cart');
-    });
-});
-
-async function precioTotal() {
-    try {
-        console.log("se abre preciototal"); 
-        const response = await fetch(`/cargarCarro?`);
-        // Verifica si la respuesta es exitosa (código 200)
-        
-        const data = await response.json();
-        const total = data.reduce((accumulator, prodCarro) => {
-            const actPrice = prodCarro.price;
-            return accumulator + actPrice;
-        }, 0);
-
-        console.log('El total es: ' + total);
-
-        const mensajeIngredientes = document.getElementById('precioTotal');
-        mensajeIngredientes.innerHTML = '<p>' + total + '</p>';
-    } catch (error) {
-        console.error('Error al obtener el carrito:', error);
+    if (price === ""){
+        const mensajePrecio = document.getElementById('priceMessage');
+        mensajePrecio.innerHTML = '<p> El precio no puede estra vacio </p>';
+        plato.price= false; 
+    } else if (isNaN(Number(price))){
+        const mensajePrecio= document.getElementById('priceMessage');
+        mensajePrecio.innerHTML = '<p> El precio debe der un numero</p>';
+        plato.price=false;
+    } else {
+        const mensajePrecio= document.getElementById('priceMessage')
+        mensajePrecio.innerHTML= '';
+        plato.price= true;
     }
+    disableSubmitButton();
+    return;
+}
+
+function checkRuta (){
+    let rutaInput = document.getElementById ('ruta');
+    let ruta = rutaInput.value.trim();
+    console.log('ruta:', ruta);
+    const mensajeRuta = document.getElementById('rutaMessage');
+    const regex = /^https:\/\/.*\.jpg$/;
+
+    if (ruta === ""){
+        const mensajeRuta = document.getElementById('rutaMessage');
+        mensajeRuta.innerHTML = '<p>La ruta de la imagen del plato no puede estar vacia </p>';
+        plato.ruta= false; 
+    } else if (!regex.test(ruta)) {
+        mensajeRuta.innerHTML = '<p>La ruta debe comenzar con "https://" y terminar con ".jpg"</p>';
+        plato.ruta = false;
+    } else {
+        const mensajeRuta= document.getElementById('rutaMessage');
+        mensajeRuta.innerHTML= '';
+        plato.ruta= true;
+    }
+    disableSubmitButton();
+    return;
+}
+
+function checkDescripcion() {
+    let descripcionInput = document.getElementById('descripcion');
+    let descripcion = descripcionInput.value.trim();
+
+    console.log('Descripcion:', descripcion);
+    const descriptionLength = descripcion.length;
+    const mensajeDescripcion = document.getElementById('descripcionMessage');
+
+    if (!descripcion) {
+        mensajeDescripcion.innerHTML = 'La descripción del plato no puede estar vacía';
+        plato.descripcion = false;
+    } else if (descriptionLength < 50 || descriptionLength > 500) {
+        mensajeDescripcion.innerHTML = 'La descripción debe tener entre 50 y 500 caracteres';
+        plato.descripcion = false;
+    } else {
+        mensajeDescripcion.innerHTML = '';
+        plato.descripcion = true;
+    }
+
+    disableSubmitButton();
+    return;
 }
