@@ -50,18 +50,38 @@
 	  </nav>
 	  <!--FIN BANNER-->
 	  <!--Boton-->
-	  <div class="container boton-anadirplato">
-        <div class="item nuevoplato">
+	  <div class ="container-top-buttons">
+    	<div class="item  addDish-1">
             <button data-bs-toggle="modal" type="button" data-bs-target="#modalnuevoproducto" class="btn btn-dark boton-anadir-plato">Añadir Nuevo Plato</button>
-        </div>  
-		<p id="space"></p> 
-    </div>		
+        </div>
+		<div class="container-icon">
+			<img class="cartImg" src="https://cdn-icons-png.flaticon.com/512/98/98667.png">
+			<div class="count-products">
+				<span id="productCounter">0</span>
+			</div>
+			<div class="container-cart-products hidden-cart">
+				<div class="row-product">
+					<div class="cart-product">	
+								<!--AQUÍ SE TIENEN QUE MOSTRAR LOS ELEMENTOS DEL CARRITO-->
+								<p class="cantidad-producto-carrito">{{number}}</p>
+								<p class="titulo-producto-carrito">{{title}}</p>
+								<p class="precio-producto-carrito">{{price}}</p>
+					</div>
+				</div>
+				<div class="cart-total">
+					<h3>Total:</h3>			
+					<div id="totalPrice"></div><!--AQUI SE TIENE QUE MOSTRAR EL PRECIO TOTAL-->
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>			
 <!--Empiezan los platos-->
-<div id="primerosContainer" class="container">
+<div id="firstsContainer" class="container">
 <p id="space"></p>			
 	<div class="container">
         <h1>Primeros</h1>
-        <div class="platos-container">
+        <div class="dishesContainer">
             {{#primeros}}
                 <div class="plato">
                     <img src="{{img}}" alt="{{title}}">
@@ -73,6 +93,7 @@
             {{/primeros}}
         </div>
 		<button  class="btn btn-dark" onclick='loadMore("primeros")'>Mostrar mas primeros</button>
+		<p id="space"></p>
     </div>
 </div>	
 

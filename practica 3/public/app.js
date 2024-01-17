@@ -161,6 +161,8 @@ async function ComprobarForm(campo) {
 }
 }
 
+
+
  function checkIngredients(){
     let ingredientsInput = document.getElementById('ingredients');
     let ingredients = ingredientsInput.value.trim();
@@ -181,4 +183,36 @@ async function ComprobarForm(campo) {
     }
     disableSubmitButton();
     return;
+}
+
+//SCRIPT PARA INDEX - CARRITO COMPRA 
+document.addEventListener('DOMContentLoaded', function () {
+    const btnCart = document.querySelector('.container-icon');
+    console.log(btnCart); 
+    const containerCartProducts = document.querySelector('.container-cart-products');
+
+    btnCart.addEventListener('click', () => {
+        containerCartProducts.classList.toggle('hidden-cart');
+    });
+});
+
+async function precioTotal() {
+    try {
+        console.log("se abre preciototal"); 
+        const response = await fetch(`/cargarCarro?`);
+        // Verifica si la respuesta es exitosa (código 200)
+        
+        const data = await response.json();
+        const total = data.reduce((accumulator, prodCarro) => {
+            const actPrice = prodCarro.price;
+            return accumulator + actPrice;
+        }, 0);
+
+        console.log('El total es: ' + total);
+
+        const mensajeIngredientes = document.getElementById('precioTotal');
+        mensajeIngredientes.innerHTML = '<p>' + total + '</p>';
+    } catch (error) {
+        console.error('Error al obtener el carrito:', error);
+    }
 }
