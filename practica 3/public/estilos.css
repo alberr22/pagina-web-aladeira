@@ -266,4 +266,30 @@ margin-right: auto;
 }
 
 
+input{
+    width: 15vw;
+    padding: 10px;
+    outline: none;
+    border: 5px solid #CCD1E4;
+    font-weight: 600;
+}
 
+#listaArticulos{
+    font-size: 10px;
+    margin-top: auto;
+    list-style: none;
+    font-weight: 6;
+    color: #ffffff;
+    text-align: center;
+}
+li{
+    margin: auto;
+}
+
+.filtro{
+    display: none;
+}
+.buscador-container{
+    display: flex;
+    
+}

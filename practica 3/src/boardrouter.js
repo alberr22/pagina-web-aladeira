@@ -1,6 +1,7 @@
 import express from 'express';
 import * as boardService from './boardservice.js';
 
+
 const router = express.Router();
 router.use(express.urlencoded({ extended: true })); // Agrega esta línea para configurar body-parser
 let existingplatos= ['callos'];
@@ -27,7 +28,15 @@ router.get('/abiableform', (req, res) => {
     res.json(response)
 });
 
-
+router.get('/search', (req, res) => {
+    
+    let input = req.query.input;
+    let platos = elementos.searchElems(input);
+    
+    res.render('index', {
+        platos: platos
+    })
+})
 
 router.get('/cargar-mas', (req, res) => {
     const { category } = req.query;

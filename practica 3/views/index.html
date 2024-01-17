@@ -41,22 +41,32 @@
 				<a class="nav-link disabled" aria-disabled="true"></a>
 			  </li>
 			</ul>
-			<form class="d-flex" role="search">
-			  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-			  <button class="btn btn-outline-success" type="submit">Search</button>
-			</form>
+			   <!--Search Bar-->
+			   <div class="buscador-container">
+			  <form id="buscarPlatos">
+				<input id="categroia" onblur="search(categoria)" name="categoria" placeholder="Seleciona una categoria" required>
+				<br>
+				<input type="text" name="plato" placeholder="Seleciona el nombre del plato" >
+				<br>
+				<input type="submit">
+			  </form>
+			</div>
+			<!--End of Search Bar-->
 		  </div>
 		</div>
 	  </nav>
 	  <!--FIN BANNER-->
-	  <!--Boton-->
+	  <!--Boton--> 
+
 	  <div class="container boton-anadirplato">
         <div class="item nuevoplato">
             <button data-bs-toggle="modal" type="button" data-bs-target="#modalnuevoproducto" class="btn btn-dark boton-anadir-plato">Añadir Nuevo Plato</button>
         </div>  
 		<p id="space"></p> 
-    </div>		
+    </div>	
+		
 <!--Empiezan los platos-->
+<div id="main"></div>
 <div id="primerosContainer" class="container">
 <p id="space"></p>			
 	<div class="container">

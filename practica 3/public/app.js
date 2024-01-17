@@ -6,6 +6,12 @@ var plato = {
 
     
 };
+
+var busqueda = {
+    categoria:false,
+    plato:false
+}
+
 var cesta ={
 
 }
@@ -73,7 +79,7 @@ function disableSubmitButton() {
 async function ComprobarForm(campo) {
     // Resetear mensajes
     
-    //showAvailabilityAndIngredientsAndpriceMessage('', '', '');
+    
 
     if (campo== "title") {
     // Comprobar título
@@ -224,4 +230,21 @@ function checkDescripcion() {
 
     disableSubmitButton();
     return;
+}
+async function search(busqueda){
+    
+
+    if (busqueda == 'categoria'){
+        let busquedaInput = document.getElementsByName('categoria');
+        let categoria = busquedaInput.value.trim();
+
+        console.log('Categoria:', categoria);
+    } else if (busqueda == 'plato') {
+        let platoInput = document.getElementsByName('plato');
+        let plato = platoInput.value.trim();
+
+    }
+    
+
+    
 }
