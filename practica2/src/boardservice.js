@@ -19,7 +19,12 @@ export function addPedidos(pedido, idplato) {
     pedido.idplato= idplato;
     pedido.id = id.toString();
     pedidos.set(pedido.id, pedido);
+   
 }
+
+
+
+
 
 export function getPedidos(idplato) {
     let result= new Map();

@@ -28,10 +28,24 @@ export function getPedidos(idplato) {
             result.set(id,pedido)
         }
     })
-    console.log(pedidos);
-    console.log(idplato);
-    console.log(result);
+   
     return result;
+}
+export function getPlato(idplato){
+    if (posts.primeros.get(idplato)){
+        return posts.primeros.get(idplato);
+    } else if (posts.segundos.get(idplato)){
+        return posts.segundos.get(idplato);
+
+    } else if (posts.postres.get(idplato)){
+        return posts.postres.get(idplato);
+    }
+}
+
+export function getCarrito (){
+    console.log(pedidos);
+    console.log('--------------')
+    return pedidos;
 }
 
 export function editPost(oldCategory,category, post, postid) {

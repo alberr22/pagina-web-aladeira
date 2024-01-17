@@ -1,7 +1,6 @@
 import express from 'express';
 import * as boardService from './boardservice.js';
 
-
 const router = express.Router();
 router.use(express.urlencoded({ extended: true })); // Agrega esta línea para configurar body-parser
 let existingplatos= ['callos'];
@@ -27,15 +26,24 @@ router.get('/abiableform', (req, res) => {
     } 
     res.json(response)
 });
+router.get ('/carrito', (req, res)=>{
+    
+    
+    let carrito = boardService.getCarrito();
+    let result =  [];
+    carrito.forEach(element => {
+        result.push(element)
+    });
+    console.log(result); 
+    console.log('**********CARRITO****************')
+    res.json(result);
+})
 
-router.get('/search', (req, res) => {
-    
-    let input = req.query.input;
-    let platos = elementos.searchElems(input);
-    
-    res.render('index', {
-        platos: platos
-    })
+router.get('/plato',(req, res)=>{
+     const {id} = req.query;
+     let result = boardService.getPlato(id);
+     res.json(result);
+
 })
 
 router.get('/cargar-mas', (req, res) => {
@@ -69,7 +77,8 @@ function getUpdatedPlatos(category, shownCount) {
 
 
 router.post('/pedido/new/:id,:category', (req, res) => {
-    let pedidos = boardService.getPedidos();
+    // Obtén los pedidos para el idplato específico
+    let pedidos = boardService.getPedidos(req.params.id);
 
     // Verifica si el pedido ya existe antes de agregarlo nuevamente
     const pedidoExistente = Array.from(pedidos.values()).find(
@@ -79,12 +88,13 @@ router.post('/pedido/new/:id,:category', (req, res) => {
     if (!pedidoExistente) {
         boardService.addPedidos(req.body, req.params.id);
     }
-    
+
     pedidos = boardService.getPedidos(req.params.id);
     let post = boardService.getPost(req.params.category, req.params.id);
     console.log(pedidos);
-    res.render('show_post', { post, pedidos: [...pedidos.values()] });
+    res.redirect(`/post/${req.params.id},${req.params.category}`);
 });
+
 
 
 

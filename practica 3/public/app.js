@@ -6,12 +6,6 @@ var plato = {
 
     
 };
-
-var busqueda = {
-    categoria:false,
-    plato:false
-}
-
 var cesta ={
 
 }
@@ -60,6 +54,61 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+document.addEventListener('DOMContentLoaded', function () {
+const btnCart = document.querySelector('.container-icon');
+const containerCartProducts = document.querySelector('.container-cart-products');
+const huecoCarrito = document.getElementById('carrito');
+const huecoTotal = document.getElementById('totalPrice'); 
+const nElementos = document.getElementById('productCounter')
+nElementos.innerHTML = '<p>0</p>'; 
+btnCart.addEventListener('click', () => {
+    carrito().then(data=>{
+        let total  = 0 ; 
+        let newString = ''; 
+        nElementos.innerHTML = '<p>'+data.length+'</p>'; 
+        if (data.length == 0) {
+            huecoCarrito.innerHTML = '<p> No hay nada en tu carrito </p>'; 
+            huecoTotal.innerHTML = '<p>0</p>'
+        }
+        else{
+        for (let i=0; i<data.length; i++){
+            let infoPedido = data[i];
+            let cantidad = infoPedido.cantidad;
+            let id = infoPedido.idplato;
+            plato(id).then(platocontenido =>{
+                let nombre = platocontenido.title;
+                let precio = (platocontenido.price * cantidad);
+                total += precio ; 
+                newString += ('<p>'+cantidad+' '+nombre+' '+precio+'</p>'); 
+                huecoCarrito.innerHTML = newString;
+                huecoTotal.innerHTML = total ; 
+
+            })
+        }
+        
+        }
+    
+    containerCartProducts.classList.toggle('hidden-cart');
+    })
+    async function plato(id){
+        const response = await fetch(`/plato?id=${id}`);
+        const data = await response.json();  
+        return data;
+    }
+});
+});
+
+
+
+
+
+async function carrito ()  {
+    
+    const response = await fetch(`/carrito`);
+    const data = await response.json();
+    
+    return data;
+}
 
 function loadMore(category) {
     loadAJAX(category);
@@ -79,7 +128,7 @@ function disableSubmitButton() {
 async function ComprobarForm(campo) {
     // Resetear mensajes
     
-    
+    //showAvailabilityAndIngredientsAndpriceMessage('', '', '');
 
     if (campo== "title") {
     // Comprobar título
@@ -231,20 +280,4 @@ function checkDescripcion() {
     disableSubmitButton();
     return;
 }
-async function search(busqueda){
-    
 
-    if (busqueda == 'categoria'){
-        let busquedaInput = document.getElementsByName('categoria');
-        let categoria = busquedaInput.value.trim();
-
-        console.log('Categoria:', categoria);
-    } else if (busqueda == 'plato') {
-        let platoInput = document.getElementsByName('plato');
-        let plato = platoInput.value.trim();
-
-    }
-    
-
-    
-}

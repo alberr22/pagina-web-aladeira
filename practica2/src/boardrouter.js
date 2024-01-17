@@ -13,7 +13,8 @@ router.get('/', (_req, res) => {
 });
 
 router.post('/pedido/new/:id,:category', (req, res) => {
-    let pedidos = boardService.getPedidos();
+    // Obtén los pedidos para el idplato específico
+    let pedidos = boardService.getPedidos(req.params.id);
 
     // Verifica si el pedido ya existe antes de agregarlo nuevamente
     const pedidoExistente = Array.from(pedidos.values()).find(
@@ -27,7 +28,7 @@ router.post('/pedido/new/:id,:category', (req, res) => {
     pedidos = boardService.getPedidos(req.params.id);
     let post = boardService.getPost(req.params.category, req.params.id);
     console.log(pedidos);
-    res.render('show_post', { post, pedidos: [...pedidos.values()] });
+    res.redirect(`/post/${req.params.id},${req.params.category}`);
 });
 
 

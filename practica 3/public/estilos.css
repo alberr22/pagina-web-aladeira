@@ -1,4 +1,4 @@
-.dishesContainer {
+.platos-container {
     display: flex;
     flex-direction: row;
 }
@@ -77,6 +77,10 @@ a{
 .plato img {
     width: 200px; /* Define un ancho específico */
     height: 200px; /* Define una altura específica */
+    display: block; 
+    margin: auto; 
+    border: 4px solid rgb(10,10,10);
+    border-radius: 10px; 
 }
 
 .container3 {
@@ -106,9 +110,17 @@ a{
     
 }
 
+.container-top-buttonsEsp{
+    display: flex;
+  
+    margin-right:6%; 
+    margin-left:6%;
+    margin-top: 50px;
+    justify-content: right;
+}
 .container-top-buttons{
     display: flex;
-    flex: nowrap; 
+  
     margin-right:6%; 
     margin-left:6%;
     margin-top: 50px;
@@ -172,7 +184,7 @@ a{
     justify-content: space-around; 
     margin-top: 20px;
 }
-.firstsContainer{
+.primerosContainer{
     margin-top: auto;
     margin-left: auto;
     margin-left: auto;
@@ -268,8 +280,16 @@ margin-right: auto;
 
 .callos {
     margin-top: 10px ; 
-    width: 40%;
-    display:center; 
+    width: 30%;
+    height: auto; /* Define una altura específica */
+    border: 4px solid rgb(10,10,10);
+    border-radius: 10px; 
+    margin: auto; 
+}
+
+#container-comida{
+    display: flex;
+    justify-content: center;
 }
 
 .ordersContainer {
@@ -362,7 +382,6 @@ header{
 .cart-product{
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
     align-items: center;
     padding: 30px;
     border-bottom: 2px solid rgba(0, 0, 0, 0.20);
@@ -421,30 +440,4 @@ header{
     display: none;
 }
 
-input{
-    width: 15vw;
-    padding: 10px;
-    outline: none;
-    border: 5px solid #CCD1E4;
-    font-weight: 600;
-}
 
-#listaArticulos{
-    font-size: 10px;
-    margin-top: auto;
-    list-style: none;
-    font-weight: 6;
-    color: #ffffff;
-    text-align: center;
-}
-li{
-    margin: auto;
-}
-
-.filtro{
-    display: none;
-}
-.buscador-container{
-    display: flex;
-    
-}
